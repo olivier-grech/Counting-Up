@@ -2,7 +2,7 @@
 
 var buildings;
 var first_column;
-var grid_size;
+var grid_size = 6;
 var ver_offset;
 var hor_offset;
 var temp;
@@ -24,7 +24,7 @@ for (var a = 0; a < grid_size; a++) {
 first_column = scr_shuffle_array(first_column, grid_size);
 
 for (var a = 0; a < grid_size; a++) {
-   buildings[1, a] = first_column[a];
+   buildings[0, a] = first_column[a];
 }
 
 //Create available number list
@@ -53,7 +53,13 @@ for (var i = 1; i < grid_size; i++) {
         }
         
         ds_list_shuffle(available_numbers_list);
-        buildings[i, j] = ds_list_find_value(available_numbers_list, 0);
+        if (ds_list_find_value(available_numbers_list, 0) != undefined) {
+            buildings[i, j] = ds_list_find_value(available_numbers_list, 0);
+        }
+        else {
+            j = grid_size;
+            i--;
+        }
         
     }
 }
