@@ -1,12 +1,18 @@
 ///Fill the buildings array
 
-var buildings;
-var first_column;
+var temp;
+var temp_max;
+
 var grid_size = 6;
 var ver_offset;
 var hor_offset;
-var temp;
 var available_numbers_list = ds_list_create();
+
+var first_column;
+var buildings;
+
+var indicator_ver; //Displayed vertically
+var indicator_hor; //Displayed horizontally
 
 
 //Create the buildings array
@@ -65,5 +71,34 @@ for (var i = 1; i < grid_size; i++) {
 }
 
 show_debug_message(buildings);
+
+//Create indicators showing the number of visible buildings
+for (var i = 0; i < grid_size; i++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var j = 0; j < grid_size; j++) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_hor[i] = temp;
+}
+
+for (var j = 0; j < grid_size; j++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var i = 0; i < grid_size; i++) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_ver[j] = temp;
+}
+
+show_debug_message(indicator_hor);
+show_debug_message(indicator_ver);
+
 
 

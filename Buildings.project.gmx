@@ -19,6 +19,7 @@
   <objects name="objects">
     <objects name="UI">
       <object>objects\obj_button_play</object>
+      <object>objects\obj_building</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
