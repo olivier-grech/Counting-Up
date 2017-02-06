@@ -39,8 +39,3 @@ for (var i = 1; i < grid_size; i++) {
         
     }
 }
-    
-
-
-
-show_debug_message(buildings);
