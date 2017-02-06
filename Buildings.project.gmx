@@ -5,7 +5,10 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_button_play</sprite>
+    <sprite>sprites\spr_building</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -14,6 +17,9 @@
     <script>scripts\scr_shuffle_array.gml</script>
   </scripts>
   <objects name="objects">
+    <objects name="UI">
+      <object>objects\obj_button_play</object>
+    </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
       <object>objects\obj_setup_game</object>
