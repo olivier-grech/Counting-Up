@@ -3,7 +3,7 @@
 var temp;
 var temp_max;
 
-var grid_size = 6;
+var grid_size = 5;
 var ver_offset;
 var hor_offset;
 var available_numbers_list = ds_list_create();
@@ -11,9 +11,10 @@ var available_numbers_list = ds_list_create();
 var first_column;
 var buildings;
 
-var indicator_ver; //Displayed vertically
-var indicator_hor; //Displayed horizontally
-
+var indicator_left; 
+var indicator_right; 
+var indicator_up; 
+var indicator_down; 
 
 //Create the buildings array
 for (var i = 0; i < grid_size; i++) {
@@ -82,7 +83,19 @@ for (var i = 0; i < grid_size; i++) {
             temp++;
         }
     }
-    indicator_hor[i] = temp;
+    indicator_up[i] = temp;
+}
+
+for (var i = 0; i < grid_size; i++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var j = grid_size-1; j >= 0; j--) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_down[i] = temp;
 }
 
 for (var j = 0; j < grid_size; j++) { 
@@ -94,11 +107,30 @@ for (var j = 0; j < grid_size; j++) {
             temp++;
         }
     }
-    indicator_ver[j] = temp;
+    indicator_left[j] = temp;
 }
 
-show_debug_message(indicator_hor);
-show_debug_message(indicator_ver);
+for (var j = 0; j < grid_size; j++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var i = grid_size-1; i >= 0; i--) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_right[j] = temp;
+}
+
+
+show_debug_message("Left indicator (from up to down):");
+show_debug_message(indicator_left);
+show_debug_message("Right indicator (from up to down):");
+show_debug_message(indicator_right);
+show_debug_message("Up indicator (from left to right):");
+show_debug_message(indicator_up);
+show_debug_message("Down indicator (from left to right):");
+show_debug_message(indicator_down);
 
 
 
