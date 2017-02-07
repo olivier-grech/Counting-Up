@@ -6,8 +6,15 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_button_play</sprite>
-    <sprite>sprites\spr_building</sprite>
+    <sprites name="UI">
+      <sprite>sprites\spr_button_play</sprite>
+      <sprite>sprites\spr_button_quit</sprite>
+      <sprite>sprites\spr_button_settings</sprite>
+      <sprite>sprites\spr_button_about</sprite>
+    </sprites>
+    <sprites name="Buildings">
+      <sprite>sprites\spr_building_1</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -17,9 +24,12 @@
     <script>scripts\scr_shuffle_array.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\obj_building</object>
     <objects name="UI">
       <object>objects\obj_button_play</object>
-      <object>objects\obj_building</object>
+      <object>objects\obj_button_quit</object>
+      <object>objects\obj_button_settings</object>
+      <object>objects\obj_button_about</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
