@@ -25,6 +25,7 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_building</object>
+    <object>objects\obj_indicator</object>
     <objects name="UI">
       <object>objects\obj_button_play</object>
       <object>objects\obj_button_quit</object>

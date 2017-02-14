@@ -4,9 +4,15 @@ var temp;
 var temp_max;
 
 var grid_size = 5;
-var ver_offset;
-var hor_offset;
-var available_numbers_list = ds_list_create();
+var hor_offset = 96;
+var ver_offset = 128;
+var gap = 48;
+
+var indicator_up_y = 64;
+var indicator_down_y = 384;
+var indicator_left_x = 32;
+var indicator_right_x = 352;
+
 
 var first_column;
 var buildings;
@@ -15,6 +21,11 @@ var indicator_left;
 var indicator_right; 
 var indicator_up; 
 var indicator_down; 
+
+var available_numbers_list = ds_list_create();
+
+//Regenerate the random seed
+randomize();
 
 //Create the buildings array
 for (var i = 0; i < grid_size; i++) {
@@ -122,7 +133,6 @@ for (var j = 0; j < grid_size; j++) {
     indicator_right[j] = temp;
 }
 
-
 show_debug_message("Left indicator (from up to down):");
 show_debug_message(indicator_left);
 show_debug_message("Right indicator (from up to down):");
@@ -131,6 +141,35 @@ show_debug_message("Up indicator (from left to right):");
 show_debug_message(indicator_up);
 show_debug_message("Down indicator (from left to right):");
 show_debug_message(indicator_down);
+
+//Instanciate the buildings
+for (var i = 0; i < grid_size; i++) {
+    for (var j = 0; j < grid_size; j++) {
+        instance_create(hor_offset+(i*gap), ver_offset+(j*gap), obj_building);
+    }
+}
+
+//Instanciate the up indicators
+for (var i = 0; i < grid_size; i++) {
+    instance_create(hor_offset+(i*gap), indicator_up_y, obj_indicator);
+}
+
+//Instanciate the down indicators
+for (var i = 0; i < grid_size; i++) {
+    instance_create(hor_offset+(i*gap), indicator_down_y, obj_indicator);
+}
+
+//Instanciate the left indicators
+for (var j = 0; j < grid_size; j++) {
+    instance_create(indicator_left_x, ver_offset+(j*gap), obj_indicator);
+}
+
+//Instanciate the right indicators
+for (var j = 0; j < grid_size; j++) {
+    instance_create(indicator_right_x, ver_offset+(j*gap), obj_indicator);
+}
+
+
 
 
 
