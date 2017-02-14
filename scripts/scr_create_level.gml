@@ -151,22 +151,34 @@ for (var i = 0; i < grid_size; i++) {
 
 //Instanciate the up indicators
 for (var i = 0; i < grid_size; i++) {
-    instance_create(hor_offset+(i*gap), indicator_up_y, obj_indicator);
+    inst = instance_create(hor_offset+(i*gap), indicator_up_y, obj_indicator);
+    with (inst) {
+        height = indicator_up[i];
+    }
 }
 
 //Instanciate the down indicators
 for (var i = 0; i < grid_size; i++) {
-    instance_create(hor_offset+(i*gap), indicator_down_y, obj_indicator);
+    inst = instance_create(hor_offset+(i*gap), indicator_down_y, obj_indicator);
+    with (inst) {
+        height = indicator_down[i];
+    }
 }
 
 //Instanciate the left indicators
 for (var j = 0; j < grid_size; j++) {
-    instance_create(indicator_left_x, ver_offset+(j*gap), obj_indicator);
+    inst = instance_create(indicator_left_x, ver_offset+(j*gap), obj_indicator);
+    with (inst) {
+        height = indicator_left[j];
+    }
 }
 
 //Instanciate the right indicators
 for (var j = 0; j < grid_size; j++) {
-    instance_create(indicator_right_x, ver_offset+(j*gap), obj_indicator);
+    inst = instance_create(indicator_right_x, ver_offset+(j*gap), obj_indicator);
+    with (inst) {
+        height = indicator_right[j];
+    }
 }
 
 
