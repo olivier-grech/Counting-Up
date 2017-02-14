@@ -181,6 +181,31 @@ for (var j = 0; j < grid_size; j++) {
     }
 }
 
+for (var i = 0; i < instance_number(obj_indicator); i += 1)
+{
+   current_indicator = instance_find(obj_indicator, i);
+   
+   switch (current_indicator.height) {
+ 
+        case 1:
+          current_indicator.sprite_index = spr_indicator_1;
+          break;
+        case 2:
+          current_indicator.sprite_index = spr_indicator_2;
+          break;
+        case 3:
+          current_indicator.sprite_index = spr_indicator_3;
+          break;
+        case 4:
+          current_indicator.sprite_index = spr_indicator_4;
+          break;
+        case 5:
+          current_indicator.sprite_index = spr_indicator_5;
+          break;
+    }
+}
+
+
 
 
 
