@@ -51,12 +51,33 @@ height = 1;
             <kind>1</kind>
             <string>///Increase height
 
-if (height != 6) {
+if (height != 5) {
     height++;
 }
 else {
     height = 1;
 }
+
+switch (height) {
+ 
+    case 1:
+      sprite_index = spr_building_1;
+      break;
+    case 2:
+      sprite_index = spr_building_2;
+      break;
+    case 3:
+      sprite_index = spr_building_3;
+      break;
+    case 4:
+      sprite_index = spr_building_4;
+      break;
+    case 5:
+      sprite_index = spr_building_5;
+      break;
+}
+
+
 </string>
           </argument>
         </arguments>
