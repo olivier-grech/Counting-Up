@@ -50,49 +50,6 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Affiche le texte sur les boutons de niveaux
-
-/*var number_of_levels_h = 4;
-var number_of_levels_v = 5;
-var number_of_levels_total = number_of_levels_h*number_of_levels_v;
-var level = page*number_of_levels_total;
-var roomname;
-var message;
-
-for (var i=0; i&lt;number_of_levels_v; i++)
-{
-    for (var j=0; j&lt;number_of_levels_h; j++)
-    {
-        level++;
-        roomname = "room_level" + string(level);
-        ini_open("savedata.ini");
-        message = ini_read_real("levels", roomname, 0);
-        message = string(message) + string(level)
-        draw_text(68+j*72, 48+i*72, message);
-    }
-}*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

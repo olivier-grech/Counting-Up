@@ -53,6 +53,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu_main</room>
+    <room>rooms\room_menu_about</room>
     <room>rooms\room_menu_settings</room>
     <room>rooms\room_game</room>
   </rooms>
