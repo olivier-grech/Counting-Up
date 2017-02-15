@@ -32,10 +32,8 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scr_create_level.gml</script>
     <script>scripts\scr_draw_clear.gml</script>
     <script>scripts\scr_shuffle_array.gml</script>
-    <script>scripts\scr_check_completion.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_building</object>
