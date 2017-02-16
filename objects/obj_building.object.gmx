@@ -86,8 +86,8 @@ inst = instance_find(obj_create_level, 0);
 with (inst) {
 
     //Increase the height in guessed_buildings
-    guessed_buildings[other.i, other.j] = other.height;
-    show_debug_message(guessed_buildings[other.i, other.j]);
+    buildings_guessed[other.i, other.j] = other.height;
+    show_debug_message(buildings_guessed[other.i, other.j]);
 
     var indicator_up_correct;
     var indicator_down_correct;
