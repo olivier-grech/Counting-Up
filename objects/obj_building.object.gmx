@@ -77,6 +77,11 @@ switch (height) {
       break;
 }
 
+inst = instance_find(obj_create_level, 0);
+with (inst) {
+    //Check level completion
+}
+
 
 </string>
           </argument>
