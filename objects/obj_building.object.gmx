@@ -89,10 +89,16 @@ with (inst) {
     guessed_buildings[other.i, other.j] = other.height;
     show_debug_message(guessed_buildings[other.i, other.j]);
 
-    var indicator_up_correct = true;
-    var indicator_down_correct = true;
-    var indicator_left_correct = true;
-    var indicator_right_correct = true;
+    var indicator_up_correct;
+    var indicator_down_correct;
+    var indicator_left_correct;
+    var indicator_right_correct;
+    indicator_up_correct = true;
+    indicator_down_correct = true;
+    indicator_left_correct = true;
+    indicator_right_correct = true;
+    
+     
 
     for (var i = 0; i &lt; grid_size; i++) { 
         temp = 0;
@@ -104,8 +110,11 @@ with (inst) {
             }
         }
         
+        
+        show_debug_message(string(temp));
         if (indicator_up[i] != temp) {
             indicator_up_correct = false;
+           
         }
     }
     
