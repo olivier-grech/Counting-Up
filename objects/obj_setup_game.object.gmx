@@ -27,14 +27,12 @@
             <kind>1</kind>
             <string>ini_open("savedata.ini");
 //Ce code ne s'éxecute qu'une seule fois au tout premier lancement du jeu
-if !ini_section_exists("levels")
+if !ini_section_exists("player")
 {
-    var roomname;
-    for (var i=0; i&lt;4; i++)
-    {
-        roomname = "room_level" + string(i);
-        ini_write_real("levels", roomname, 1);
-    }
+   
+    ini_write_real("player", "played_tutorial", 0);
+    ini_write_real("player", "current_level_5", 1);
+    
 
 }
 
