@@ -49,8 +49,9 @@ height = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Increase height
+            <string>///Increase height and then check level completion
 
+//Increase height
 if (height != 5) {
     height++;
 }
@@ -77,9 +78,88 @@ switch (height) {
       break;
 }
 
+
+
+
+//Check level completion
 inst = instance_find(obj_create_level, 0);
 with (inst) {
-    //Check level completion
+
+    //Increase the height in guessed_buildings
+    guessed_buildings[other.i, other.j] = other.height;
+    show_debug_message(guessed_buildings[other.i, other.j]);
+
+    var indicator_up_correct = true;
+    var indicator_down_correct = true;
+    var indicator_left_correct = true;
+    var indicator_right_correct = true;
+
+    for (var i = 0; i &lt; grid_size; i++) { 
+        temp = 0;
+        temp_max = 0;
+        for (var j = 0; j &lt; grid_size; j++) {
+            if (buildings_guessed[i, j] &gt; temp_max) {
+                temp_max = buildings_guessed[i, j];
+                temp++;
+            }
+        }
+        
+        if (indicator_up[i] != temp) {
+            indicator_up_correct = false;
+        }
+    }
+    
+    for (var i = 0; i &lt; grid_size; i++) { 
+        temp = 0;
+        temp_max = 0;
+        for (var j = grid_size-1; j &gt;= 0; j--) {
+            if (buildings_guessed[i, j] &gt; temp_max) {
+                temp_max = buildings_guessed[i, j];
+                temp++;
+            }
+        }
+        
+         if (indicator_down[i] != temp) {
+            indicator_down_correct = false;
+        }
+    }
+    
+    for (var j = 0; j &lt; grid_size; j++) { 
+        temp = 0;
+        temp_max = 0;
+        for (var i = 0; i &lt; grid_size; i++) {
+            if (buildings_guessed[i, j] &gt; temp_max) {
+                temp_max = buildings_guessed[i, j];
+                temp++;
+            }
+        }
+        
+        if (indicator_left[j] != temp) {
+            indicator_left_correct = false;
+        }
+    }
+    
+    for (var j = 0; j &lt; grid_size; j++) { 
+        temp = 0;
+        temp_max = 0;
+        for (var i = grid_size-1; i &gt;= 0; i--) {
+            if (buildings_guessed[i, j] &gt; temp_max) {
+                temp_max = buildings_guessed[i, j];
+                temp++;
+            }
+        }
+        
+        if (indicator_right[j] != temp) {
+            indicator_right_correct = false;
+        }
+    }
+    
+    if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct) {
+        show_debug_message("Level oomplete!");
+    }
+    else {
+        show_debug_message("...");
+    }
 }
 
 
