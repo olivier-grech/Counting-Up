@@ -45,6 +45,7 @@
       <object>objects\obj_button_settings</object>
       <object>objects\obj_button_about</object>
       <object>objects\obj_button_home</object>
+      <object>objects\obj_button_donate</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
