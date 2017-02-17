@@ -11,6 +11,7 @@
       <sprite>sprites\spr_button_quit</sprite>
       <sprite>sprites\spr_button_settings</sprite>
       <sprite>sprites\spr_button_about</sprite>
+      <sprite>sprites\spr_button_home</sprite>
     </sprites>
     <sprites name="Buildings">
       <sprite>sprites\spr_building_1</sprite>
@@ -43,10 +44,12 @@
       <object>objects\obj_button_quit</object>
       <object>objects\obj_button_settings</object>
       <object>objects\obj_button_about</object>
+      <object>objects\obj_button_home</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
       <object>objects\obj_setup_game</object>
+      <object>objects\obj_display_credits</object>
     </objects>
   </objects>
   <rooms name="rooms">
