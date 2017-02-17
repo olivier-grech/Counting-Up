@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ini_open("savedata.ini");
+            <string>///Initialise les sauvegardes et les paramètres de draw
+
+draw_set_font(fon_kenvector_future);
+
+ini_open("savedata.ini");
+
 //Ce code ne s'éxecute qu'une seule fois au tout premier lancement du jeu
 if !ini_section_exists("player")
 {
@@ -38,6 +43,50 @@ if !ini_section_exists("player")
 
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>213</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>-1</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>sou_doodle</sound>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>211</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>sou_doodle</sound>
+          </argument>
+          <argument>
+            <kind>3</kind>
+            <string>1</string>
           </argument>
         </arguments>
       </action>

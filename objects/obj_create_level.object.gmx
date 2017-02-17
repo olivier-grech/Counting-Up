@@ -270,7 +270,7 @@ for (var i = 0; i &lt; instance_number(obj_indicator); i += 1)
 level = ini_read_real("player", "current_level_5", 0);
 level = string(level);
 draw_set_halign(fa_center);
-draw_text(208, 16, level);
+draw_text(208, 16, "Level "+level);
 </string>
           </argument>
         </arguments>
