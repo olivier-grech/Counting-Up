@@ -87,8 +87,7 @@ with (inst) {
 
     //Increase the height in guessed_buildings
     buildings_guessed[other.i, other.j] = other.height;
-    show_debug_message(buildings_guessed[other.i, other.j]);
-
+    
     var indicator_up_correct;
     var indicator_down_correct;
     var indicator_left_correct;
@@ -167,8 +166,17 @@ with (inst) {
     show_debug_message("Down: " +string(indicator_down_correct));
     show_debug_message("Left: " +string(indicator_left_correct));
     show_debug_message("Right: " +string(indicator_right_correct));
+    
     if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct) {
+        
         show_debug_message("Level oomplete!");
+        if ini_section_exists("player")
+        {
+            var current_level = ini_read_real("player", "current_level_5", 0);
+            show_debug_message("Level finished: "+string(current_level));
+            ini_write_real("player", "current_level_5", current_level+1);
+            room_restart();
+        }
     }
     else {
         show_debug_message("...");
