@@ -39,7 +39,7 @@ if !ini_section_exists("player")
     ini_write_real("player", "current_level_5", 1);
 }
 
-ini_write_real("player", "music_on", 0);
+
 music_on = ini_read_real("player", "music_on", 1);
 
 
