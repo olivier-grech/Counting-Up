@@ -27,32 +27,30 @@
             <kind>1</kind>
             <string>///Create level
 
-//Fill the buildings array
-
-var temp;
-var temp_max;
-
 grid_size = 5;
-var hor_offset = 96;
-var ver_offset = 128;
-var gap = 48;
-
-var indicator_up_y = 64;
-var indicator_down_y = 384;
-var indicator_left_x = 32;
-var indicator_right_x = 352;
-
-
-var first_column;
 buildings[0, 0] = 0;
 buildings_guessed[0, 0] = 0;
-
 indicator_left[0] = 0; 
 indicator_right[0] = 0; 
 indicator_up[0] = 0; 
 indicator_down[0] = 0; 
 
+var temp;
+var temp_max;
+var first_column;
 var available_numbers_list = ds_list_create();
+
+//UI info
+var cell_size = 32;
+
+//UI position variable
+var hor_offset = 96;
+var ver_offset = 128;
+var gap = 48;
+var indicator_up_y = 64;
+var indicator_down_y = 384;
+var indicator_left_x = 32;
+var indicator_right_x = 352;
 
 //Regenerate the random seed
 randomize();
@@ -66,14 +64,14 @@ for (var i = 0; i &lt; grid_size; i++) {
 }
 
 //Create the first column
-for (var a = 0; a &lt; grid_size; a++) {
-    first_column[a] = a+1; //Numbers from 1 to grid_size
+for (var i = 0; i &lt; grid_size; i++) {
+    first_column[i] = i+1; //Numbers from 1 to grid_size
 }
 
 first_column = scr_shuffle_array(first_column, grid_size);
 
-for (var a = 0; a &lt; grid_size; a++) {
-   buildings[0, a] = first_column[a];
+for (var i = 0; i &lt; grid_size; i++) {
+   buildings[0, i] = first_column[i];
 }
 
 //Create available number list
@@ -112,8 +110,6 @@ for (var i = 1; i &lt; grid_size; i++) {
         
     }
 }
-
-show_debug_message(buildings);
 
 //Create indicators showing the number of visible buildings
 for (var i = 0; i &lt; grid_size; i++) { 
@@ -164,6 +160,7 @@ for (var j = 0; j &lt; grid_size; j++) {
     indicator_right[j] = temp;
 }
 
+show_debug_message(buildings);
 show_debug_message("Left indicator (from up to down):");
 show_debug_message(indicator_left);
 show_debug_message("Right indicator (from up to down):");
