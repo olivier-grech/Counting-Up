@@ -41,12 +41,26 @@ var first_column;
 var available_numbers_list = ds_list_create();
 
 //UI info
-var cell_size = 32;
+var cell_size = 32
+
+var hor_offset;
+var ver_offset;
+var gap = 48;
+
+//Case where the grid size is even
+if (grid_size % 2 == 0) 
+{
+
+}
+//Case where the grid size is odd
+else 
+{
+    hor_offset = room_width-(gap*(floor(grid_size/2))+cell_size*(grid_size/2));
+}
 
 //UI position variable
-var hor_offset = 96;
-var ver_offset = 128;
-var gap = 48;
+
+
 var indicator_up_y = 64;
 var indicator_down_y = 384;
 var indicator_left_x = 32;
