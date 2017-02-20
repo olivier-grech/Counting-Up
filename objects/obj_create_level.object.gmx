@@ -40,31 +40,37 @@ var temp_max;
 var first_column;
 var available_numbers_list = ds_list_create();
 
-//UI info
+//UI 
+var gap = 48;
 var cell_size = 32
-
+var gap_between_cells = 16;
 var hor_offset;
 var ver_offset;
-var gap = 48;
 
 //Case where the grid size is even
 if (grid_size % 2 == 0) 
 {
-
+    hor_offset = (room_width/2)-(gap_between_cells*(grid_size/2))+(cell_size*((grid_size/2)-0.5));
+    ver_offset = (room_height/2)-(gap_between_cells*(grid_size/2))+(cell_size*((grid_size/2)-0.5));
 }
 //Case where the grid size is odd
 else 
 {
-    hor_offset = room_width-(gap*(floor(grid_size/2))+cell_size*(grid_size/2));
+    hor_offset = (room_width/2)-((gap_between_cells*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
+    ver_offset = (room_height/2)-((gap_between_cells*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
 }
 
-//UI position variable
+var indicator_up_y = ver_offset - (2*cell_size);
+var indicator_down_y = (room_height/2) + ver_offset;
+var indicator_left_x =  hor_offset - (2*cell_size);
+var indicator_right_x = (room_width/2) + hor_offset + (cell_size);
 
-
+/*
 var indicator_up_y = 64;
 var indicator_down_y = 384;
 var indicator_left_x = 32;
 var indicator_right_x = 352;
+*/
 
 //Regenerate the random seed
 randomize();
