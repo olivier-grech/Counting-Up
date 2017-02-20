@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>///Create level
 
-grid_size = 3;
 buildings[0, 0] = 0;
 buildings_guessed[0, 0] = 0;
 indicator_left[0] = 0; 
