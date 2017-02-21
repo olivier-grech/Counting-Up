@@ -55,6 +55,7 @@
       <object>objects\obj_button_home</object>
       <object>objects\obj_button_donate</object>
       <object>objects\obj_button_music</object>
+      <object>objects\obj_button_next</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
@@ -78,7 +79,9 @@
     <room>rooms\room_menu_difficulty</room>
     <room>rooms\room_game_5</room>
     <room>rooms\room_game_4</room>
-    <room>rooms\room_tutorial</room>
+    <room>rooms\room_tutorial_part1</room>
+    <room>rooms\room_tutorial_part2</room>
+    <room>rooms\room_tutorial_part3</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
