@@ -49,15 +49,11 @@ var indicator_down_y = (room_height/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(
 var indicator_left_x =  hor_offset - (2*cell_size);
 var indicator_right_x = (room_width/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2))) + cell_size;
 
-/*
-var indicator_up_y = 64;
-var indicator_down_y = 384;
-var indicator_left_x = 32;
-var indicator_right_x = 352;
-*/
-
 //Regenerate the random seed
 randomize();
+
+//TODO: Check for existence of the buildings array
+
 
 //Create the buildings array
 for (var i = 0; i &lt; grid_size; i++) {
@@ -238,6 +234,9 @@ for (var i = 0; i &lt; instance_number(obj_indicator); i += 1)
           break;
     }
 }
+
+//
+
 
 
 
