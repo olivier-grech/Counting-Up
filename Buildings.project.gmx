@@ -58,8 +58,17 @@
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
+      <object>objects\obj_create_tutorial</object>
       <object>objects\obj_setup_game</object>
       <object>objects\obj_display_credits</object>
+    </objects>
+    <objects name="Tutorial">
+      <object>objects\obj_building1_tutorial</object>
+      <object>objects\obj_building2_tutorial</object>
+      <object>objects\obj_building3_tutorial</object>
+      <object>objects\obj_indicator1_tutorial</object>
+      <object>objects\obj_indicator2_tutorial</object>
+      <object>objects\obj_indicator3_tutorial</object>
     </objects>
   </objects>
   <rooms name="rooms">
