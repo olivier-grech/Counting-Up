@@ -52,7 +52,8 @@ var indicator_right_x = (room_width/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(
 //Regenerate the random seed
 randomize();
 
-//TODO: Check for existence of the buildings array
+//Check for previous existence of the buildings array
+
 
 
 //Create the buildings array
