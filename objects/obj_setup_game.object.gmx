@@ -25,13 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialise les sauvegardes et les paramètres de draw
+            <string>/// Initialise les sauvegardes et les paramètres de draw
 
 draw_set_font(fon_kenvector_future);
-
 ini_open("savedata.ini");
 
-//Ce code ne s'éxecute qu'une seule fois au tout premier lancement du jeu
+// Vérifie l'existence du fichier .ini
 if !ini_section_exists("player") 
 {
     ini_write_real("player", "played_tutorial", 0);
@@ -39,6 +38,11 @@ if !ini_section_exists("player")
     ini_write_real("player", "current_level_5", 1);
 }
 
+// Vérifie l'existence du fichier .dat
+if !file_exists("save.dat") 
+{
+    ds_map_secure_save(map, "save.dat");
+}
 
 music_on = ini_read_real("player", "music_on", 1);
 

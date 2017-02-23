@@ -49,18 +49,20 @@ height = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Increase height and then check level completion
+            <string>/// Increase height and then check level completion
 
-//Increase height
-if (height != 5) {
+// Increase height
+if (height != 5) 
+{
     height++;
 }
-else {
+else 
+{
     height = 1;
 }
 
-switch (height) {
- 
+switch (height) 
+{
     case 1:
       sprite_index = spr_building_1;
       break;
@@ -78,14 +80,11 @@ switch (height) {
       break;
 }
 
-
-
-
-//Check level completion
+// Check level completion
 inst = instance_find(obj_create_level, 0);
-with (inst) {
-
-    //Increase the height in guessed_buildings
+with (inst) 
+{
+    // Increase the height in guessed_buildings
     buildings_guessed[other.i, other.j] = other.height;
     
     var indicator_up_correct;
@@ -97,90 +96,93 @@ with (inst) {
     indicator_left_correct = true;
     indicator_right_correct = true;
     
-     
-
-    for (var i = 0; i &lt; grid_size; i++) { 
+    for (var i = 0; i &lt; grid_size; i++) 
+    { 
         temp = 0;
         temp_max = 0;
-        for (var j = 0; j &lt; grid_size; j++) {
-            if (buildings_guessed[i, j] &gt; temp_max) {
+        for (var j = 0; j &lt; grid_size; j++) 
+        {
+            if (buildings_guessed[i, j] &gt; temp_max) 
+            {
                 temp_max = buildings_guessed[i, j];
                 temp++;
             }
         }
         
-        
-        show_debug_message(string(temp));
-        if (indicator_up[i] != temp) {
+        if (indicator_up[i] != temp) 
+        {
             indicator_up_correct = false;
-           
         }
     }
     
-    for (var i = 0; i &lt; grid_size; i++) { 
+    for (var i = 0; i &lt; grid_size; i++) 
+    { 
         temp = 0;
         temp_max = 0;
-        for (var j = grid_size-1; j &gt;= 0; j--) {
-            if (buildings_guessed[i, j] &gt; temp_max) {
+        for (var j = grid_size-1; j &gt;= 0; j--) 
+        {
+            if (buildings_guessed[i, j] &gt; temp_max) 
+            {
                 temp_max = buildings_guessed[i, j];
                 temp++;
             }
         }
         
-         if (indicator_down[i] != temp) {
+         if (indicator_down[i] != temp) 
+         {
             indicator_down_correct = false;
         }
     }
     
-    for (var j = 0; j &lt; grid_size; j++) { 
+    for (var j = 0; j &lt; grid_size; j++) 
+    { 
         temp = 0;
         temp_max = 0;
-        for (var i = 0; i &lt; grid_size; i++) {
-            if (buildings_guessed[i, j] &gt; temp_max) {
+        for (var i = 0; i &lt; grid_size; i++) 
+        {
+            if (buildings_guessed[i, j] &gt; temp_max) 
+            {
                 temp_max = buildings_guessed[i, j];
                 temp++;
             }
         }
         
-        if (indicator_left[j] != temp) {
+        if (indicator_left[j] != temp) 
+        {
             indicator_left_correct = false;
         }
     }
     
-    for (var j = 0; j &lt; grid_size; j++) { 
+    for (var j = 0; j &lt; grid_size; j++) 
+    { 
         temp = 0;
         temp_max = 0;
-        for (var i = grid_size-1; i &gt;= 0; i--) {
-            if (buildings_guessed[i, j] &gt; temp_max) {
+        for (var i = grid_size-1; i &gt;= 0; i--) 
+        {
+            if (buildings_guessed[i, j] &gt; temp_max) 
+            {
                 temp_max = buildings_guessed[i, j];
                 temp++;
             }
         }
         
-        if (indicator_right[j] != temp) {
+        if (indicator_right[j] != temp) 
+        {
             indicator_right_correct = false;
         }
     }
     
-    show_debug_message("Up: " +string(indicator_up_correct));
-    show_debug_message("Down: " +string(indicator_down_correct));
-    show_debug_message("Left: " +string(indicator_left_correct));
-    show_debug_message("Right: " +string(indicator_right_correct));
-    
-    if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct) {
-        
-        show_debug_message("Level oomplete!");
+    // Level complete
+    if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct) 
+    {
         if ini_section_exists("player")
         {
             var current_level = ini_read_real("player", "current_level_5", 0);
-            show_debug_message("Level finished: "+string(current_level));
             ini_write_real("player", "current_level_5", current_level+1);
             room_restart();
         }
     }
-    else {
-        show_debug_message("...");
-    }
+    // --------------------
 }
 
 
