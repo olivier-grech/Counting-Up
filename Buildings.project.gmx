@@ -69,6 +69,7 @@
       <object>objects\obj_setup_game</object>
       <object>objects\obj_display_credits</object>
       <object>objects\obj_display_difficulty_choice</object>
+      <object>objects\obj_display_transition</object>
     </objects>
     <objects name="Tutorial">
       <object>objects\obj_building1_tutorial</object>
@@ -89,6 +90,7 @@
     <room>rooms\room_tutorial_part1</room>
     <room>rooms\room_tutorial_part2</room>
     <room>rooms\room_tutorial_part3</room>
+    <room>rooms\room_transition</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
