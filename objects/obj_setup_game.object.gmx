@@ -35,6 +35,7 @@ if !ini_section_exists("player")
 {
     ini_write_real("player", "played_tutorial", 0);
     ini_write_real("player", "music_on", 0);
+    ini_write_real("player", "current_level_4", 1);
     ini_write_real("player", "current_level_5", 1);
     
     save_grid_4 = ds_grid_create(4, 4);

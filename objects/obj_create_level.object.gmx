@@ -281,9 +281,19 @@ for (var i = 0; i &lt; instance_number(obj_indicator); i += 1)
             <kind>1</kind>
             <string>///Display level number
 
-level = ini_read_real("player", "current_level_5", 0);
+level = ini_read_real("player", "current_level_"+string(grid_size), 0);
 level = string(level);
 draw_set_halign(fa_center);
+
+if(grid_size==4)
+{
+    level += " - Normal"
+}
+else if (grid_size==5)
+{
+    level += " - Hard"
+}
+
 draw_text(208, 16, "Level "+level);
 </string>
           </argument>
