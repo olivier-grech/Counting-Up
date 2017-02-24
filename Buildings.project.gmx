@@ -82,8 +82,8 @@
     <room>rooms\room_menu_about</room>
     <room>rooms\room_menu_settings</room>
     <room>rooms\room_menu_difficulty</room>
-    <room>rooms\room_game_5</room>
     <room>rooms\room_game_4</room>
+    <room>rooms\room_game_5</room>
     <room>rooms\room_tutorial_part1</room>
     <room>rooms\room_tutorial_part2</room>
     <room>rooms\room_tutorial_part3</room>

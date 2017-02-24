@@ -52,38 +52,41 @@ height = 1;
             <string>/// Increase height and then check level completion
 
 // Increase height
-if (height != 5) 
-{
-    height++;
-}
-else 
-{
-    height = 1;
-}
 
-switch (height) 
-{
-    case 1:
-      sprite_index = spr_building_1;
-      break;
-    case 2:
-      sprite_index = spr_building_2;
-      break;
-    case 3:
-      sprite_index = spr_building_3;
-      break;
-    case 4:
-      sprite_index = spr_building_4;
-      break;
-    case 5:
-      sprite_index = spr_building_5;
-      break;
-}
 
 // Check level completion
 inst = instance_find(obj_create_level, 0);
 with (inst) 
 {
+
+    if (other.height != grid_size) 
+    {
+        other.height++;
+    }
+    else 
+    {
+        other.height = 1;
+    }
+    
+    switch (other.height) 
+    {
+        case 1:
+          other.sprite_index = spr_building_1;
+          break;
+        case 2:
+          other.sprite_index = spr_building_2;
+          break;
+        case 3:
+          other.sprite_index = spr_building_3;
+          break;
+        case 4:
+          other.sprite_index = spr_building_4;
+          break;
+        case 5:
+          other.sprite_index = spr_building_5;
+          break;
+    }
+    
     // Increase the height in guessed_buildings
     buildings_guessed[other.i, other.j] = other.height;
     
