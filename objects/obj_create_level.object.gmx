@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create level
+            <string>/// Create level
 
 buildings[0, 0] = 0;
 buildings_guessed[0, 0] = 0;
@@ -39,7 +39,7 @@ var temp_max;
 var first_column;
 var available_numbers_list = ds_list_create();
 
-//UI 
+// UI 
 var gap = 16;
 var cell_size = 32
 var hor_offset = (room_width/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
@@ -49,14 +49,10 @@ var indicator_down_y = (room_height/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(
 var indicator_left_x =  hor_offset - (2*cell_size);
 var indicator_right_x = (room_width/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2))) + cell_size;
 
-//Regenerate the random seed
-randomize();
+// Grids for save management
+save_grid = ds_grid_create(grid_size, grid_size);
 
-//Check for previous existence of the buildings array
-
-
-
-//Create the buildings array
+// Initialize the buildings array
 for (var i = 0; i &lt; grid_size; i++) {
     for (var j = 0; j &lt; grid_size; j++) {
         buildings[i, j] = 0;
@@ -64,51 +60,67 @@ for (var i = 0; i &lt; grid_size; i++) {
     }
 }
 
-//Create the first column
-for (var i = 0; i &lt; grid_size; i++) {
-    first_column[i] = i+1; //Numbers from 1 to grid_size
+// Check for prior existence of the buildings array
+if (ini_read_string("player", "save_grid_"+string(grid_size), "")!="") 
+{
+    ds_grid_read(grid, ini_read_string("player", "save_grid_"+string(grid_size), ""));
+    for (var i = 0; i &lt; grid_size; i++) {
+        for (var j = 0; j &lt; grid_size; j++) {
+            buildings[i, j] = ds_grid_get(save_grid, i, j);;
+        }
+    }
 }
-
-first_column = scr_shuffle_array(first_column, grid_size);
-
-for (var i = 0; i &lt; grid_size; i++) {
-   buildings[0, i] = first_column[i];
-}
-
-//Create available number list
-for (var i = 1; i &lt; grid_size; i++) { 
-    for (var j = 0; j &lt; grid_size; j++) {
-        
-        //Generate a list with value from 1 to grid_size
-        ds_list_clear(available_numbers_list);
-        
-        for (var a = 0; a &lt; grid_size; a++) {
-            ds_list_add(available_numbers_list, a+1);
-        }
-        
-        for (var a = 0; a &lt; i; a++) {
-            temp = ds_list_find_index(available_numbers_list, buildings[a, j]);
-            if (temp != -1) {
-                ds_list_delete(available_numbers_list, temp);
+else
+{
+    // Regenerate the random seed
+    randomize();
+    
+    //Create the first column
+    for (var i = 0; i &lt; grid_size; i++) {
+        first_column[i] = i+1; //Numbers from 1 to grid_size
+    }
+    
+    first_column = scr_shuffle_array(first_column, grid_size);
+    
+    for (var i = 0; i &lt; grid_size; i++) {
+       buildings[0, i] = first_column[i];
+    }
+    
+    //Create available number list
+    for (var i = 1; i &lt; grid_size; i++) { 
+        for (var j = 0; j &lt; grid_size; j++) {
+            
+            //Generate a list with value from 1 to grid_size
+            ds_list_clear(available_numbers_list);
+            
+            for (var a = 0; a &lt; grid_size; a++) {
+                ds_list_add(available_numbers_list, a+1);
             }
-        }
-        
-        for (var a = 0; a &lt; j; a++) {
-            temp = ds_list_find_index(available_numbers_list, buildings[i, a]);
-            if (temp != -1) {
-                ds_list_delete(available_numbers_list, temp);
+            
+            for (var a = 0; a &lt; i; a++) {
+                temp = ds_list_find_index(available_numbers_list, buildings[a, j]);
+                if (temp != -1) {
+                    ds_list_delete(available_numbers_list, temp);
+                }
             }
+            
+            for (var a = 0; a &lt; j; a++) {
+                temp = ds_list_find_index(available_numbers_list, buildings[i, a]);
+                if (temp != -1) {
+                    ds_list_delete(available_numbers_list, temp);
+                }
+            }
+            
+            ds_list_shuffle(available_numbers_list);
+            if (ds_list_find_value(available_numbers_list, 0) != undefined) {
+                buildings[i, j] = ds_list_find_value(available_numbers_list, 0);
+            }
+            else {
+                j = grid_size;
+                i--;
+            }
+            
         }
-        
-        ds_list_shuffle(available_numbers_list);
-        if (ds_list_find_value(available_numbers_list, 0) != undefined) {
-            buildings[i, j] = ds_list_find_value(available_numbers_list, 0);
-        }
-        else {
-            j = grid_size;
-            i--;
-        }
-        
     }
 }
 

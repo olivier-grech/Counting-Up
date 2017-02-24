@@ -46,14 +46,6 @@ if !ini_section_exists("player")
     ini_write_string("player", "save_grid_5", save_grid_5_as_string);
 }
 
-
-
-
-    
-    
-
-
-
 music_on = ini_read_real("player", "music_on", 1);
 
 
