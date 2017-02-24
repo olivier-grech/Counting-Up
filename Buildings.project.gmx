@@ -20,6 +20,7 @@
       <sprite>sprites\spr_button_difficulty_normal</sprite>
       <sprite>sprites\spr_button_difficulty_hard</sprite>
       <sprite>sprites\spr_button_next</sprite>
+      <sprite>sprites\spr_button_tutorial</sprite>
     </sprites>
     <sprites name="Buildings">
       <sprite>sprites\spr_building_1</sprite>
@@ -60,6 +61,7 @@
       <object>objects\obj_button_next</object>
       <object>objects\obj_button_difficulty_normal</object>
       <object>objects\obj_button_difficulty_hard</object>
+      <object>objects\obj_button_tutorial</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
