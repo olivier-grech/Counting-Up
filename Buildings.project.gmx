@@ -61,6 +61,7 @@
       <object>objects\obj_create_tutorial</object>
       <object>objects\obj_setup_game</object>
       <object>objects\obj_display_credits</object>
+      <object>objects\obj_display_difficulty_choice</object>
     </objects>
     <objects name="Tutorial">
       <object>objects\obj_building1_tutorial</object>

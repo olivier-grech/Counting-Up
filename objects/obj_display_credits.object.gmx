@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>
 draw_set_halign(fa_center);
-draw_text(208, 64, "Made by##Olivier Grech###With music from##StumpyStrust");
+draw_text(208, 64, "Made  by##Olivier  Grech###With  music  from##StumpyStrust");
 </string>
           </argument>
         </arguments>
