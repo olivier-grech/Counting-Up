@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Create level
 
+grid_size = 5;
 buildings[0, 0] = 0;
 buildings_guessed[0, 0] = 0;
 indicator_left[0] = 0; 
@@ -63,7 +64,7 @@ for (var i = 0; i &lt; grid_size; i++) {
 // Check for prior existence of the buildings array
 if (ini_read_string("player", "save_grid_"+string(grid_size), "")!="") 
 {
-    ds_grid_read(grid, ini_read_string("player", "save_grid_"+string(grid_size), ""));
+    ds_grid_read(save_grid, ini_read_string("player", "save_grid_"+string(grid_size), ""));
     for (var i = 0; i &lt; grid_size; i++) {
         for (var j = 0; j &lt; grid_size; j++) {
             buildings[i, j] = ds_grid_get(save_grid, i, j);;

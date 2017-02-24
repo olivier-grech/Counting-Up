@@ -179,13 +179,24 @@ with (inst)
         {
             var current_level = ini_read_real("player", "current_level_5", 0);
             ini_write_real("player", "current_level_5", current_level+1);
+            ini_write_string("player", "save_grid_"+string(grid_size), "");
             room_restart();
         }
     }
-    // --------------------
     else
     {
-        // TODO: save the level
+        // Create a temporary list from the buildings array then delete it
+        save_grid = ds_grid_create(grid_size, grid_size);
+        for (var i = 0; i &lt; grid_size; i++) {
+            for (var j = 0; j &lt; grid_size; j++) {
+                ds_grid_set(save_grid, i, j, buildings[i, j]);
+
+            }
+        }
+        save_grid_as_string = ds_grid_write(save_grid);
+        ini_write_string("player", "save_grid_"+string(grid_size), save_grid_as_string);
+        ds_grid_destroy(save_grid);
+        
     }
     
 }
