@@ -65,7 +65,8 @@
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
-      <object>objects\obj_create_tutorial</object>
+      <object>objects\obj_create_tutorial_part1</object>
+      <object>objects\obj_create_tutorial_part2</object>
       <object>objects\obj_setup_game</object>
       <object>objects\obj_display_credits</object>
       <object>objects\obj_display_difficulty_choice</object>
@@ -89,7 +90,6 @@
     <room>rooms\room_game_5</room>
     <room>rooms\room_tutorial_part1</room>
     <room>rooms\room_tutorial_part2</room>
-    <room>rooms\room_tutorial_part3</room>
     <room>rooms\room_transition</room>
   </rooms>
   <help>
