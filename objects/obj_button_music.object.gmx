@@ -61,11 +61,13 @@ else
 if (music_on == 1)
 {
     music_on = ini_write_real("player", "music_on", 0);
+    audio_stop_sound(sou_doodle);
     sprite_index = spr_button_musicoff;
 }
 else 
 {
     music_on = ini_write_real("player", "music_on", 1);
+    audio_play_sound(sou_doodle, 1, true);
     sprite_index = spr_button_musicon;
 }
 </string>
