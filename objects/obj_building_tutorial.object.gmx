@@ -175,6 +175,11 @@ with (inst)
         }
     }
     
+    show_debug_message("Left "+string(indicator_left_correct));
+    show_debug_message("Right "+string(indicator_right_correct));
+    show_debug_message("Down "+string(indicator_down_correct));
+    show_debug_message("Up "+string(indicator_up_correct));
+    
     // Level complete
     if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct) 
     {
