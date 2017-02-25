@@ -184,7 +184,7 @@ for (var i = 0; i &lt; instance_number(obj_indicator); i += 1)
 }
 
 show_debug_message(string(buildings));
-
+show_debug_message(string(buildings_guessed));
 
 
 

@@ -38,13 +38,9 @@ if !ini_section_exists("player")
     ini_write_real("player", "current_level_4", 1);
     ini_write_real("player", "current_level_5", 1);
     
-    /*save_grid_4 = ds_grid_create(4, 4);
-    save_grid_4_as_string = ds_grid_write(save_grid_4);*/
     ini_write_string("player", "save_grid_4", "");
-    
-    save_grid_5 = ds_grid_create(5, 5);
-    save_grid_5_as_string = ds_grid_write(save_grid_5);
-    ini_write_string("player", "save_grid_5", save_grid_5_as_string);
+    ini_write_string("player", "save_grid_5", "");
+    show_debug_message("Init");
 }
 
 music_on = ini_read_real("player", "music_on", 1);
