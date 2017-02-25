@@ -70,6 +70,7 @@
       <object>objects\obj_create_tutorial_part2</object>
       <object>objects\obj_create_tutorial_part3</object>
       <object>objects\obj_create_tutorial_part4</object>
+      <object>objects\obj_create_tutorial_part5</object>
       <object>objects\obj_setup_game</object>
       <object>objects\obj_display_credits</object>
       <object>objects\obj_display_difficulty_choice</object>
@@ -96,6 +97,7 @@
     <room>rooms\room_tutorial_part2</room>
     <room>rooms\room_tutorial_part3</room>
     <room>rooms\room_tutorial_part4</room>
+    <room>rooms\room_tutorial_part5</room>
     <room>rooms\room_transition</room>
   </rooms>
   <help>
