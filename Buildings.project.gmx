@@ -37,6 +37,7 @@
       <sprite>sprites\spr_indicator_4</sprite>
       <sprite>sprites\spr_indicator_5</sprite>
       <sprite>sprites\spr_indicator_6</sprite>
+      <sprite>sprites\spr_arrow</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -68,6 +69,7 @@
       <object>objects\obj_create_tutorial_part1</object>
       <object>objects\obj_create_tutorial_part2</object>
       <object>objects\obj_create_tutorial_part3</object>
+      <object>objects\obj_create_tutorial_part4</object>
       <object>objects\obj_setup_game</object>
       <object>objects\obj_display_credits</object>
       <object>objects\obj_display_difficulty_choice</object>
@@ -80,6 +82,7 @@
       <object>objects\obj_indicator1_tutorial</object>
       <object>objects\obj_indicator2_tutorial</object>
       <object>objects\obj_indicator3_tutorial</object>
+      <object>objects\obj_arrow</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -92,6 +95,7 @@
     <room>rooms\room_tutorial_part1</room>
     <room>rooms\room_tutorial_part2</room>
     <room>rooms\room_tutorial_part3</room>
+    <room>rooms\room_tutorial_part4</room>
     <room>rooms\room_transition</room>
   </rooms>
   <help>
