@@ -179,26 +179,18 @@ with (inst)
     
     // Check unicity
     
-    for (var i = 0; i &lt; grid_size; i++) 
+    
+    if (scr_check_uniqueness_array(buildings_guessed) == 1)
     {
-        temp_1 = 0;
-        temp_2 = 0;
-        for (var j = 0; j &lt; grid_size; j++) 
-        {
-            temp_1 += buildings_guessed[i, j]
-            temp_2 += buildings_guessed[j, i]
-        }
-        
-        if ((temp_1 != 6) &amp;&amp; (temp_2 != 6))
-        {
-            unicity_correct = false;
-        }
+        unicity_correct = true;
+    }
+    else 
+    {
+        unicity_correct = false;
     }
     
-    show_debug_message("Left "+string(indicator_left_correct));
-    show_debug_message("Right "+string(indicator_right_correct));
-    show_debug_message("Down "+string(indicator_down_correct));
-    show_debug_message("Up "+string(indicator_up_correct));
+    //show_debug_message(string(unicity_correct));
+   
     
     // Level complete
     if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct &amp;&amp; unicity_correct) 
