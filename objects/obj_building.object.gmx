@@ -183,7 +183,7 @@ with (inst)
             var current_level = ini_read_real("player", "current_level_"+string(grid_size), 0);
             ini_write_real("player", "current_level_"+string(grid_size), current_level+1);
             ini_write_string("player", "save_grid_"+string(grid_size), "");
-            room_restart();
+            room_goto(room_transition);
         }
     }
     else
