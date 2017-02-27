@@ -175,10 +175,8 @@ with (inst)
         }
     }
     
-    //TODO Vérifier l'unicité
-    
     // Level complete
-    if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct) 
+    if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct &amp;&amp; scr_check_uniqueness_array(buildings_guessed)) 
     {
         if ini_section_exists("player")
         {

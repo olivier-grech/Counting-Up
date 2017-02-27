@@ -1,4 +1,5 @@
 /// Check the uniqueness of elements in each row and column of the array argument0
+
 var _grid_size = array_height_2d(argument0);
 var _sum = 0;
 var _temp1 = 0;
@@ -20,8 +21,6 @@ for (var i = 0; i < _grid_size; i++)
         _temp2 = _temp2 + argument0[j, i];
     }
     
-    show_debug_message("Temp1: "+string(_temp1));
-    show_debug_message("Temp2: "+string(_temp2));
     if ((_temp1 != _sum) || (_temp2 != _sum))
     {
         _uniqueness = false;
@@ -29,5 +28,4 @@ for (var i = 0; i < _grid_size; i++)
    
 }
 
-show_debug_message(_uniqueness);
 return _uniqueness;

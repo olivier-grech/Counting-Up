@@ -177,23 +177,8 @@ with (inst)
         }
     }
     
-    // Check unicity
-    
-    
-    if (scr_check_uniqueness_array(buildings_guessed) == 1)
-    {
-        unicity_correct = true;
-    }
-    else 
-    {
-        unicity_correct = false;
-    }
-    
-    //show_debug_message(string(unicity_correct));
-   
-    
     // Level complete
-    if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct &amp;&amp; unicity_correct) 
+    if (indicator_up_correct &amp;&amp; indicator_down_correct &amp;&amp; indicator_left_correct &amp;&amp; indicator_right_correct &amp;&amp; scr_check_uniqueness_array(buildings_guessed)) 
     {
         if ini_section_exists("player")
         {
