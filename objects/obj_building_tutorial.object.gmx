@@ -185,7 +185,7 @@ with (inst)
             
             ini_write_real("player", "played_tutorial", 1);
             
-            room_goto(room_menu_difficulty);
+            room_goto(room_transition);
         }
     }
     else
