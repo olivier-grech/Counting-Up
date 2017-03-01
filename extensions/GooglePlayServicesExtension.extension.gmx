@@ -8,6 +8,8 @@
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
+  <androidProps>-1</androidProps>
+  <iosProps>-1</iosProps>
   <installdir></installdir>
   <classname>GoogleMobileAdsExt</classname>
   <androidclassname>GooglePlayServicesExtension</androidclassname>
@@ -47,11 +49,6 @@
   <iosThirdPartyFrameworks>
     <Framework weak="0">GoogleMobileAds.framework</Framework>
   </iosThirdPartyFrameworks>
-  <ConfigOptions>
-    <Config name="Default">
-      <CopyToMask>703687477428236</CopyToMask>
-    </Config>
-  </ConfigOptions>
   <androidPermissions/>
   <IncludedResources/>
   <files>
