@@ -1,12 +1,31 @@
 ///Fill the buildings array
 
-var buildings;
+var temp;
+var temp_max;
+
+var grid_size = 5;
+var hor_offset = 96;
+var ver_offset = 128;
+var gap = 48;
+
+var indicator_up_y = 64;
+var indicator_down_y = 384;
+var indicator_left_x = 32;
+var indicator_right_x = 352;
+
+
 var first_column;
-var grid_size;
-var ver_offset;
-var hor_offset;
+var buildings;
+
+var indicator_left; 
+var indicator_right; 
+var indicator_up; 
+var indicator_down; 
+
 var available_numbers_list = ds_list_create();
 
+//Regenerate the random seed
+randomize();
 
 //Create the buildings array
 for (var i = 0; i < grid_size; i++) {
@@ -16,26 +35,178 @@ for (var i = 0; i < grid_size; i++) {
 }
 
 //Create the first column
-for (var i = 0; i < grid_size; i++) {
-    first_column[i] = i+1; //Numbers from 1 to grid_size
+for (var a = 0; a < grid_size; a++) {
+    first_column[a] = a+1; //Numbers from 1 to grid_size
 }
 
 first_column = scr_shuffle_array(first_column, grid_size);
 
-for (var i = 0; i < grid_size; i++) {
-   buildings[1, i] = first_column[i];
+for (var a = 0; a < grid_size; a++) {
+   buildings[0, a] = first_column[a];
 }
 
 //Create available number list
 for (var i = 1; i < grid_size; i++) { 
     for (var j = 0; j < grid_size; j++) {
         
+        //Generate a list with value from 1 to grid_size
         ds_list_clear(available_numbers_list);
         
-        for (var a = 0; a < i; a++) {
-            ds_list_add(available_numbers_list, a);
+        for (var a = 0; a < grid_size; a++) {
+            ds_list_add(available_numbers_list, a+1);
         }
-        //buildings[i, j];
+        
+        for (var a = 0; a < i; a++) {
+            temp = ds_list_find_index(available_numbers_list, buildings[a, j]);
+            if (temp != -1) {
+                ds_list_delete(available_numbers_list, temp);
+            }
+        }
+        
+        for (var a = 0; a < j; a++) {
+            temp = ds_list_find_index(available_numbers_list, buildings[i, a]);
+            if (temp != -1) {
+                ds_list_delete(available_numbers_list, temp);
+            }
+        }
+        
+        ds_list_shuffle(available_numbers_list);
+        if (ds_list_find_value(available_numbers_list, 0) != undefined) {
+            buildings[i, j] = ds_list_find_value(available_numbers_list, 0);
+        }
+        else {
+            j = grid_size;
+            i--;
+        }
         
     }
 }
+
+show_debug_message(buildings);
+
+//Create indicators showing the number of visible buildings
+for (var i = 0; i < grid_size; i++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var j = 0; j < grid_size; j++) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_up[i] = temp;
+}
+
+for (var i = 0; i < grid_size; i++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var j = grid_size-1; j >= 0; j--) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_down[i] = temp;
+}
+
+for (var j = 0; j < grid_size; j++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var i = 0; i < grid_size; i++) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_left[j] = temp;
+}
+
+for (var j = 0; j < grid_size; j++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var i = grid_size-1; i >= 0; i--) {
+        if (buildings[i, j] > temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_right[j] = temp;
+}
+
+show_debug_message("Left indicator (from up to down):");
+show_debug_message(indicator_left);
+show_debug_message("Right indicator (from up to down):");
+show_debug_message(indicator_right);
+show_debug_message("Up indicator (from left to right):");
+show_debug_message(indicator_up);
+show_debug_message("Down indicator (from left to right):");
+show_debug_message(indicator_down);
+
+//Instanciate the buildings
+for (var i = 0; i < grid_size; i++) {
+    for (var j = 0; j < grid_size; j++) {
+        instance_create(hor_offset+(i*gap), ver_offset+(j*gap), obj_building);
+    }
+}
+
+//Instanciate the up indicators
+for (var i = 0; i < grid_size; i++) {
+    inst = instance_create(hor_offset+(i*gap), indicator_up_y, obj_indicator);
+    with (inst) {
+        height = indicator_up[i];
+    }
+}
+
+//Instanciate the down indicators
+for (var i = 0; i < grid_size; i++) {
+    inst = instance_create(hor_offset+(i*gap), indicator_down_y, obj_indicator);
+    with (inst) {
+        height = indicator_down[i];
+    }
+}
+
+//Instanciate the left indicators
+for (var j = 0; j < grid_size; j++) {
+    inst = instance_create(indicator_left_x, ver_offset+(j*gap), obj_indicator);
+    with (inst) {
+        height = indicator_left[j];
+    }
+}
+
+//Instanciate the right indicators
+for (var j = 0; j < grid_size; j++) {
+    inst = instance_create(indicator_right_x, ver_offset+(j*gap), obj_indicator);
+    with (inst) {
+        height = indicator_right[j];
+    }
+}
+
+for (var i = 0; i < instance_number(obj_indicator); i += 1)
+{
+   current_indicator = instance_find(obj_indicator, i);
+   
+   switch (current_indicator.height) {
+ 
+        case 1:
+          current_indicator.sprite_index = spr_indicator_1;
+          break;
+        case 2:
+          current_indicator.sprite_index = spr_indicator_2;
+          break;
+        case 3:
+          current_indicator.sprite_index = spr_indicator_3;
+          break;
+        case 4:
+          current_indicator.sprite_index = spr_indicator_4;
+          break;
+        case 5:
+          current_indicator.sprite_index = spr_indicator_5;
+          break;
+    }
+}
+
+
+
+
+
+

@@ -8,49 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>9</kind>
-            <script>scr_create_level</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -67,27 +25,293 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Affiche le texte sur les boutons de niveaux
+            <string>/// Create level
 
-/*var number_of_levels_h = 4;
-var number_of_levels_v = 5;
-var number_of_levels_total = number_of_levels_h*number_of_levels_v;
-var level = page*number_of_levels_total;
-var roomname;
-var message;
 
-for (var i=0; i&lt;number_of_levels_v; i++)
-{
-    for (var j=0; j&lt;number_of_levels_h; j++)
-    {
-        level++;
-        roomname = "room_level" + string(level);
-        ini_open("savedata.ini");
-        message = ini_read_real("levels", roomname, 0);
-        message = string(message) + string(level)
-        draw_text(68+j*72, 48+i*72, message);
+buildings[0, 0] = 0;
+buildings_guessed[0, 0] = 0;
+indicator_left[0] = 0; 
+indicator_right[0] = 0; 
+indicator_up[0] = 0; 
+indicator_down[0] = 0; 
+
+var temp;
+var temp_max;
+var first_column;
+var available_numbers_list = ds_list_create();
+
+// UI 
+var gap = 16;
+var cell_size = 32
+var hor_offset = (room_width/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
+var ver_offset = (room_height/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
+var indicator_up_y = ver_offset - (2*cell_size);
+var indicator_down_y = (room_height/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2))) + cell_size;
+var indicator_left_x =  hor_offset - (2*cell_size);
+var indicator_right_x = (room_width/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2))) + cell_size;
+
+// Grids for save management
+save_grid = ds_grid_create(grid_size, grid_size);
+
+// Initialize the buildings array
+for (var i = 0; i &lt; grid_size; i++) {
+    for (var j = 0; j &lt; grid_size; j++) {
+        buildings[i, j] = 0;
+        buildings_guessed[i, j] = 1;
     }
-}*/
+}
+
+// Check for prior existence of the buildings array
+if (ini_read_string("player", "save_grid_"+string(grid_size), "") != "") 
+{
+    show_debug_message("Previous level exists!");
+    ds_grid_read(save_grid, ini_read_string("player", "save_grid_"+string(grid_size), ""));
+    for (var i = 0; i &lt; grid_size; i++) {
+        for (var j = 0; j &lt; grid_size; j++) {
+            buildings[i, j] = ds_grid_get(save_grid, i, j);;
+        }
+    }
+    
+    ds_grid_destroy(save_grid);
+}
+else
+{
+    show_debug_message("Previous level doesn't exists...");
+    // Regenerate the random seed
+    randomize();
+    
+    //Create the first column
+    for (var i = 0; i &lt; grid_size; i++) {
+        first_column[i] = i+1; //Numbers from 1 to grid_size
+    }
+    
+    first_column = scr_shuffle_array(first_column, grid_size);
+    
+    for (var i = 0; i &lt; grid_size; i++) {
+       buildings[0, i] = first_column[i];
+    }
+    
+    //Create available number list
+    for (var i = 1; i &lt; grid_size; i++) { 
+        for (var j = 0; j &lt; grid_size; j++) {
+            
+            //Generate a list with value from 1 to grid_size
+            ds_list_clear(available_numbers_list);
+            
+            for (var a = 0; a &lt; grid_size; a++) {
+                ds_list_add(available_numbers_list, a+1);
+            }
+            
+            for (var a = 0; a &lt; i; a++) {
+                temp = ds_list_find_index(available_numbers_list, buildings[a, j]);
+                if (temp != -1) {
+                    ds_list_delete(available_numbers_list, temp);
+                }
+            }
+            
+            for (var a = 0; a &lt; j; a++) {
+                temp = ds_list_find_index(available_numbers_list, buildings[i, a]);
+                if (temp != -1) {
+                    ds_list_delete(available_numbers_list, temp);
+                }
+            }
+            
+            ds_list_shuffle(available_numbers_list);
+            if (ds_list_find_value(available_numbers_list, 0) != undefined) {
+                buildings[i, j] = ds_list_find_value(available_numbers_list, 0);
+            }
+            else {
+                j = grid_size;
+                i--;
+            }
+            
+        }
+    }
+    
+    // Create a temporary list from the buildings array then delete it. 
+    save_grid = ds_grid_create(grid_size, grid_size);
+    for (var i = 0; i &lt; grid_size; i++) {
+        for (var j = 0; j &lt; grid_size; j++) {
+            ds_grid_set(save_grid, i, j, buildings[i, j]);
+    
+        }
+    }
+    save_grid_as_string = ds_grid_write(save_grid);
+    ini_write_string("player", "save_grid_"+string(grid_size), save_grid_as_string);
+    ds_grid_destroy(save_grid);
+}
+
+//Create indicators showing the number of visible buildings
+for (var i = 0; i &lt; grid_size; i++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var j = 0; j &lt; grid_size; j++) {
+        if (buildings[i, j] &gt; temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_up[i] = temp;
+}
+
+for (var i = 0; i &lt; grid_size; i++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var j = grid_size-1; j &gt;= 0; j--) {
+        if (buildings[i, j] &gt; temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_down[i] = temp;
+}
+
+for (var j = 0; j &lt; grid_size; j++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var i = 0; i &lt; grid_size; i++) {
+        if (buildings[i, j] &gt; temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_left[j] = temp;
+}
+
+for (var j = 0; j &lt; grid_size; j++) { 
+    temp = 0;
+    temp_max = 0;
+    for (var i = grid_size-1; i &gt;= 0; i--) {
+        if (buildings[i, j] &gt; temp_max) {
+            temp_max = buildings[i, j];
+            temp++;
+        }
+    }
+    indicator_right[j] = temp;
+}
+
+show_debug_message(buildings);
+show_debug_message("Left indicator (from up to down):");
+show_debug_message(indicator_left);
+show_debug_message("Right indicator (from up to down):");
+show_debug_message(indicator_right);
+show_debug_message("Up indicator (from left to right):");
+show_debug_message(indicator_up);
+show_debug_message("Down indicator (from left to right):");
+show_debug_message(indicator_down);
+
+//Instanciate the buildings
+for (var i = 0; i &lt; grid_size; i++) {
+    for (var j = 0; j &lt; grid_size; j++) {
+        var inst = instance_create(hor_offset+(i*(gap+cell_size)), ver_offset+(j*(gap+cell_size)), obj_building);
+        inst.i = i;
+        inst.j = j;
+    }
+}
+
+//Instanciate the up indicators
+for (var i = 0; i &lt; grid_size; i++) {
+    inst = instance_create(hor_offset+(i*(gap+cell_size)), indicator_up_y, obj_indicator);
+    with (inst) {
+        height = other.indicator_up[i];
+    }
+}
+
+//Instanciate the down indicators
+for (var i = 0; i &lt; grid_size; i++) {
+    inst = instance_create(hor_offset+(i*(gap+cell_size)), indicator_down_y, obj_indicator);
+    with (inst) {
+        height = other.indicator_down[i];
+    }
+}
+
+//Instanciate the left indicators
+for (var j = 0; j &lt; grid_size; j++) {
+    inst = instance_create(indicator_left_x, ver_offset+(j*(gap+cell_size)), obj_indicator);
+    with (inst) {
+        height = other.indicator_left[j];
+    }
+}
+
+//Instanciate the right indicators
+for (var j = 0; j &lt; grid_size; j++) {
+    inst = instance_create(indicator_right_x, ver_offset+(j*(gap+cell_size)), obj_indicator);
+    with (inst) {
+        height = other.indicator_right[j];
+    }
+}
+
+for (var i = 0; i &lt; instance_number(obj_indicator); i += 1)
+{
+   current_indicator = instance_find(obj_indicator, i);
+   
+   switch (current_indicator.height) {
+ 
+        case 1:
+          current_indicator.sprite_index = spr_indicator_1;
+          break;
+        case 2:
+          current_indicator.sprite_index = spr_indicator_2;
+          break;
+        case 3:
+          current_indicator.sprite_index = spr_indicator_3;
+          break;
+        case 4:
+          current_indicator.sprite_index = spr_indicator_4;
+          break;
+        case 5:
+          current_indicator.sprite_index = spr_indicator_5;
+          break;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="72">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Display level number
+
+level = ini_read_real("player", "current_level_"+string(grid_size), 0);
+level = string(level);
+draw_set_halign(fa_center);
+
+if(grid_size==4)
+{
+    level += " - Normal"
+}
+else if (grid_size==5)
+{
+    level += " - Hard"
+}
+
+draw_text(208, 16, "Level "+level);
 </string>
           </argument>
         </arguments>

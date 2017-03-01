@@ -25,21 +25,103 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ini_open("savedata.ini");
-//Ce code ne s'éxecute qu'une seule fois au tout premier lancement du jeu
-if !ini_section_exists("levels")
-{
-    var roomname;
-    for (var i=0; i&lt;4; i++)
-    {
-        roomname = "room_level" + string(i);
-        ini_write_real("levels", roomname, 1);
-    }
+            <string>/// Initialise les sauvegardes et les paramètres de draw
 
+draw_set_font(fon_kenvector_future);
+ini_open("savedata.ini");
+
+// Vérifie l'existence du fichier .ini
+if !ini_section_exists("player") 
+{
+    ini_write_real("player", "played_tutorial", 0);
+    ini_write_real("player", "music_on", 0);
+    ini_write_real("player", "current_level_4", 1);
+    ini_write_real("player", "current_level_5", 1);
+    
+    ini_write_string("player", "save_grid_4", "");
+    ini_write_string("player", "save_grid_5", "");
+    show_debug_message("Init");
 }
+
+music_on = ini_read_real("player", "music_on", 1);
+
+
+
 
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>213</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>-1</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>sou_doodle</sound>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>music_on</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>211</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>sou_doodle</sound>
+          </argument>
+          <argument>
+            <kind>3</kind>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
