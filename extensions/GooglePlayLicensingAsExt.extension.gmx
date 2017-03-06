@@ -8,6 +8,8 @@
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
+  <androidProps>-1</androidProps>
+  <iosProps>-1</iosProps>
   <installdir></installdir>
   <classname></classname>
   <androidclassname>GooglePlayLicensingAsExt</androidclassname>
@@ -24,11 +26,6 @@
 compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'</gradleinject>
   <iosSystemFrameworks/>
   <iosThirdPartyFrameworks/>
-  <ConfigOptions>
-    <Config name="Default">
-      <CopyToMask>834777342120174</CopyToMask>
-    </Config>
-  </ConfigOptions>
   <androidPermissions>
     <Permission>com.android.vending.BILLING</Permission>
   </androidPermissions>

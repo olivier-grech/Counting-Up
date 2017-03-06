@@ -5,6 +5,8 @@
   </Configs>
   <NewExtensions>
     <extension index="0">extensions\GooglePlayServicesExtension</extension>
+    <extension index="1">extensions\GooglePlayLicensingAsExt</extension>
+    <extension index="2">extensions\GooglePlayServicesIAPExtension</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sou_doodle</sound>
