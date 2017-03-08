@@ -26,11 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialise les sauvegardes et les paramètres de draw
-
 draw_set_font(fon_kenvector_future);
 ini_open("savedata.ini");
 
-// Vérifie l'existence du fichier .ini
+// Vérifie l'existence de la section "player" dans le fichier .ini
 if !ini_section_exists("player") 
 {
     ini_write_real("player", "played_tutorial", 0);
@@ -45,9 +44,33 @@ if !ini_section_exists("player")
 
 music_on = ini_read_real("player", "music_on", 1);
 
+// Initialise les IAP
+var map_create = true;
 
+if file_exists("iap_data.json")
+{
+    global.purchaseMap = ds_map_secure_load("iap_data.json");
+    if ds_exists(global.purchaseMap, ds_type_map)
+    {
+        var product = "donation";
+        if ds_map_exists(global.purchaseMap, product)
+        {
+            map_create = false;
+            if ds_map_find_value(global.purchaseMap, product) != 0 //Check to see if "==0" means purchased or not purchased!
+            {
+                //TODO: Code if the purchase has been made
+            } 
+        }
+   }
+}
 
-
+if map_create
+{
+    global.purchaseMap = ds_map_create();
+    var product = "donation";
+    ds_map_add(global.purchaseMap, product, 0);
+    ds_map_secure_save(global.purchaseMap, "iap_data.json");
+}
 
 </string>
           </argument>
