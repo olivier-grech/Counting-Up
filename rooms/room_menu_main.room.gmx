@@ -10,7 +10,13 @@
   <persistent>0</persistent>
   <colour>16777215</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>room_height = display_get_height();
+room_width = display_get_width();
+
+show_debug_message(string(display_get_height()));
+show_debug_message(string(display_get_width()));
+show_debug_message(string(room_height));
+show_debug_message(string(room_width));</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
