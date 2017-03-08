@@ -72,6 +72,18 @@ if map_create
     ds_map_secure_save(global.purchaseMap, "iap_data.json");
 }
 
+// Populate the product list
+var productList = ds_list_create();
+pDonation = ds_map_create();
+ds_map_add(pDonation, "id", "donation");
+ds_map_add(pDonation, "title", "Donation");
+ds_map_add(pDonation, "type", "Consumable");
+ds_list_add(productList, pDonation);
+iap_activate(productList);
+ds_map_destroy(pDonation);
+ds_list_destroy(productList);
+
+
 </string>
           </argument>
         </arguments>
