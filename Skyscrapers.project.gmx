@@ -63,7 +63,6 @@
       <object>objects\obj_button_quit</object>
       <object>objects\obj_button_settings</object>
       <object>objects\obj_button_about</object>
-      <object>objects\obj_button_donate</object>
       <object>objects\obj_button_music</object>
       <object>objects\obj_button_next</object>
       <object>objects\obj_button_difficulty_normal</object>
@@ -92,6 +91,10 @@
       <object>objects\obj_indicator2_tutorial</object>
       <object>objects\obj_indicator3_tutorial</object>
       <object>objects\obj_arrow</object>
+    </objects>
+    <objects name="Store">
+      <object>objects\obj_button_donate</object>
+      <object>objects\obj_store_manager</object>
     </objects>
   </objects>
   <rooms name="rooms">
