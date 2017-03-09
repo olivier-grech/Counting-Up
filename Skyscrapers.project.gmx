@@ -52,6 +52,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fon_kenvector_future</font>
+    <font>fonts\fon_roboto</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_building</object>

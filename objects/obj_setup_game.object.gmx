@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialise les sauvegardes et les paramètres de draw
-draw_set_font(fon_kenvector_future);
+draw_set_font(fon_roboto);
 ini_open("savedata.ini");
 
 // Vérifie l'existence de la section "player" dans le fichier .ini
