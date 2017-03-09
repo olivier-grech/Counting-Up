@@ -89,7 +89,7 @@ else if (inst.current_difficulty == 5)
             <kind>1</kind>
             <string>
 draw_set_halign(fa_center);
-draw_text(208, 64, "Well  done!");
+draw_text(room_height/2, room_width/2, "Well  done!");
 </string>
           </argument>
         </arguments>
