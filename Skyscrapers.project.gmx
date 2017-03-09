@@ -14,9 +14,9 @@
   <sprites name="sprites">
     <sprites name="UI">
       <sprite>sprites\spr_button_play</sprite>
-      <sprite>sprites\spr_button_quit</sprite>
       <sprite>sprites\spr_button_settings</sprite>
       <sprite>sprites\spr_button_about</sprite>
+      <sprite>sprites\spr_button_quit</sprite>
       <sprite>sprites\spr_button_home</sprite>
       <sprite>sprites\spr_button_donate</sprite>
       <sprite>sprites\spr_button_musicoff</sprite>
