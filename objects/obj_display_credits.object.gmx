@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>var button_height = sprite_get_height(spr_button_play)
+var button_width = sprite_get_width(spr_button_play)
+
 draw_set_halign(fa_center);
-draw_text(208, 64, "Made  by##Olivier  Grech###With  music  from##StumpyStrust");
+draw_text(room_width/2, (2*button_height), "Made  by##Olivier  Grech###With  music  from##StumpyStrust");
 </string>
           </argument>
         </arguments>
