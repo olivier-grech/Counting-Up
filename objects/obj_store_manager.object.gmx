@@ -40,7 +40,7 @@ switch (val)
             switch(product_id)
             {
                 case "donation":
-                    iap_consume(product_id)
+                    iap_consume(product_id);
                 break;
             }
         }
