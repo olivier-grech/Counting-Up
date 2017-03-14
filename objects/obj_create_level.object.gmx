@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>/// Create level
 
-
 buildings[0, 0] = 0;
 buildings_guessed[0, 0] = 0;
 indicator_left[0] = 0; 
@@ -41,8 +40,9 @@ var first_column;
 var available_numbers_list = ds_list_create();
 
 // UI 
-var gap = 16;
-var cell_size = 32
+var cell_size = sprite_get_height(spr_building_1);
+var gap = cell_size/2;
+
 var hor_offset = (room_width/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
 var ver_offset = (room_height/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
 var indicator_up_y = ver_offset - (2*cell_size);
