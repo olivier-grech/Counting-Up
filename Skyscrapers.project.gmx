@@ -53,6 +53,7 @@
   <fonts name="fonts">
     <font>fonts\fon_kenvector_future</font>
     <font>fonts\fon_roboto</font>
+    <font>fonts\fon_baloo_bhaina</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_building</object>
@@ -82,7 +83,6 @@
       <object>objects\obj_display_difficulty_choice</object>
       <object>objects\obj_display_transition</object>
       <object>objects\obj_context</object>
-      <object>objects\obj_delete_save</object>
     </objects>
     <objects name="Tutorial">
       <object>objects\obj_building1_tutorial</object>
@@ -111,7 +111,6 @@
     <room>rooms\room_tutorial_part4</room>
     <room>rooms\room_tutorial_part5</room>
     <room>rooms\room_transition</room>
-    <room>rooms\room_delete_save</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

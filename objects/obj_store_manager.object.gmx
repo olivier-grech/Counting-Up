@@ -51,7 +51,7 @@ switch (val)
         var product_id = ds_map_find_value(iap_data, "product");
         if ds_map_find_value(iap_data, "consumed")
         {
-            ds_map_replace(global.purchaseMap, product_id, 0);
+            //ds_map_replace(global.purchaseMap, product_id, 0);
             //TODO: Actual purchase code
         }
     break;
