@@ -25,14 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialise les paramètres de draw et les sauvegardes
+            <string>/// Initialise les sauvegardes
 
 music_on = 0;
-
-// Initialise les paramètres de draw
-var col = make_color_rgb(247, 234, 244);
-draw_set_color(col);
-draw_set_font(fon_baloo_bhaina);
+current_difficulty = 0; // 0 = tutorial, 4 = 4*4, 5 = 5*5
 
 // Initialise les sauvegardes
 ini_open("savedata.ini");
@@ -49,58 +45,26 @@ else
 {
     if (!ini_key_exists("player", "played_tutorial"))
         ini_write_real("player", "played_tutorial", 0);
-    
     if (!ini_key_exists("player", "music_on"))
         ini_write_real("player", "music_on", 0);
-        
-     if (!ini_key_exists("player", "current_level_4"))
+    if (!ini_key_exists("player", "current_level_4"))
         ini_write_real("player", "current_level_4", 1);
-    
-    
-
+    if (!ini_key_exists("player", "current_level_5"))
+        ini_write_real("player", "current_level_5", 1);
+    if (!ini_key_exists("player", "save_grid_4"))
+        ini_write_string("player", "save_grid_4", "");
+    if (!ini_key_exists("player", "save_grid_5"))
+        ini_write_string("player", "save_grid_5", "");
 }
 
 // Active ou non la musique
 music_on = ini_read_real("player", "music_on", 1);
 
-// Initialise les IAP
-var map_create = true;
+if (!audio_is_playing(sou_doodle) &amp;&amp; music_on == 1)
+    audio_play_sound(sou_doodle, 10, true);
 
-if file_exists("iap_data.json")
-{
-    global.purchaseMap = ds_map_secure_load("iap_data.json");
-    if ds_exists(global.purchaseMap, ds_type_map)
-    {
-        var product = "donation";
-        if ds_map_exists(global.purchaseMap, product)
-        {
-            map_create = false;
-            if ds_map_find_value(global.purchaseMap, product) != 0 //Check to see if "==0" means purchased or not purchased!
-            {
-                //TODO: Code if the purchase has been made
-            } 
-        }
-   }
-}
 
-if map_create
-{
-    global.purchaseMap = ds_map_create();
-    var product = "donation";
-    ds_map_add(global.purchaseMap, product, 0);
-    ds_map_secure_save(global.purchaseMap, "iap_data.json");
-}
 
-// Populate the product list
-var productList = ds_list_create();
-pDonation = ds_map_create();
-ds_map_add(pDonation, "id", "donation");
-ds_map_add(pDonation, "title", "Donation");
-ds_map_add(pDonation, "type", "Consumable");
-ds_list_add(productList, pDonation);
-iap_activate(productList);
-ds_map_destroy(pDonation);
-ds_list_destroy(productList);
 
 
 </string>
@@ -109,73 +73,89 @@ ds_list_destroy(productList);
       </action>
       <action>
         <libid>1</libid>
-        <id>213</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>-1</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_if_sound</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>-1</isnot>
-        <arguments>
-          <argument>
-            <kind>6</kind>
-            <sound>sou_doodle</sound>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>612</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>-1</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_if_variable</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>music_on</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>1</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>211</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_sound</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>6</kind>
-            <sound>sou_doodle</sound>
+            <kind>1</kind>
+            <string>/// Initialise les paramètres de draw
+var col = make_color_rgb(247, 234, 244);
+draw_set_color(col);
+draw_set_font(fon_baloo_bhaina);
+</string>
           </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
           <argument>
-            <kind>3</kind>
-            <string>1</string>
+            <kind>1</kind>
+            <string>/// Initialise le ratio
+
+large_button_width = sprite_get_width(spr_button_play);
+large_button_height = sprite_get_height(spr_button_play);
+small_button_width = sprite_get_width(spr_button_home);
+small_button_height = sprite_get_height(spr_button_home);
+
+large_button_stretch = (display_get_width()*0.6666)/large_button_width;
+small_button_stretch = (display_get_width()*0.0833)/small_button_width;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_height = display_get_height();
+room_width = display_get_width();
+
+var gap = large_button_height*large_button_stretch;
+
+buttons[0] = instance_create(room_width/2, (room_height/2)-(3*gap), obj_button_play);
+buttons[1] = instance_create(room_width/2, (room_height/2)-(1*gap), obj_button_settings);
+buttons[2] = instance_create(room_width/2, (room_height/2)+(1*gap), obj_button_about);
+buttons[3] = instance_create(room_width/2, (room_height/2)+(3*gap), obj_button_quit);
+
+for (var i = 0; i &lt; 4; i++)
+{
+   buttons[i].image_xscale *= large_button_stretch;
+   buttons[i].image_yscale *= large_button_stretch;
+}
+</string>
           </argument>
         </arguments>
       </action>
