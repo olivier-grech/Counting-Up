@@ -68,6 +68,7 @@
       <object>objects\obj_button_difficulty_normal</object>
       <object>objects\obj_button_difficulty_hard</object>
       <object>objects\obj_button_tutorial</object>
+      <object>objects\obj_button_donate</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
@@ -89,10 +90,6 @@
       <object>objects\obj_indicator2_tutorial</object>
       <object>objects\obj_indicator3_tutorial</object>
       <object>objects\obj_arrow</object>
-    </objects>
-    <objects name="Store">
-      <object>objects\obj_button_donate</object>
-      <object>objects\obj_store_manager</object>
     </objects>
   </objects>
   <rooms name="rooms">
