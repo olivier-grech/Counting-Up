@@ -25,19 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (part == 1)
+            <string>var current_room_index = room;
+var current_room_name = room_get_name(current_room_index);
+
+if (current_room_name == "room_tutorial_part1")
 {
     room_goto(room_tutorial_part2);
 }
-else if (part == 2)
+else if (current_room_name == "room_tutorial_part2")
 {
     room_goto(room_tutorial_part3);
 }
-else if (part == 3)
+else if (current_room_name == "room_tutorial_part3")
 {
     room_goto(room_tutorial_part4);
 }
-else if (part == 4)
+else if (current_room_name == "room_tutorial_part4")
 {
     room_goto(room_tutorial_part5);
 }
