@@ -25,25 +25,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialise les sauvegardes et les paramètres de draw
+            <string>/// Initialise les paramètres de draw et les sauvegardes
+
+music_on = 0;
+
+// Initialise les paramètres de draw
 var col = make_color_rgb(247, 234, 244);
 draw_set_color(col);
 draw_set_font(fon_baloo_bhaina);
-ini_open("savedata.ini");
 
-// Vérifie l'existence de la section "player" dans le fichier .ini
-if !ini_section_exists("player") 
+// Initialise les sauvegardes
+ini_open("savedata.ini");
+if (!ini_section_exists("player"))
 {
-    ini_write_real("player", "played_tutorial", 0);
-    ini_write_real("player", "music_on", 0);
-    ini_write_real("player", "current_level_4", 1);
-    ini_write_real("player", "current_level_5", 1);
+    ini_write_real("player", "played_tutorial", 0); // Indique si le tutorial a été joué ou non
+    ini_write_real("player", "music_on", 0); // Indique si la musique est active ou non
+    ini_write_real("player", "current_level_4", 1); // Indique le niveau actuel en difficulté 4
+    ini_write_real("player", "current_level_5", 1); // Indique le niveau actuel en difficulté 5
+    ini_write_string("player", "save_grid_4", ""); // Le niveau actuellement joué en difficulté 4
+    ini_write_string("player", "save_grid_5", ""); // Le niveau actuellement joué en difficulté 5
+}
+else 
+{
+    if (!ini_key_exists("player", "played_tutorial"))
+        ini_write_real("player", "played_tutorial", 0);
     
-    ini_write_string("player", "save_grid_4", "");
-    ini_write_string("player", "save_grid_5", "");
-    show_debug_message("Init");
+    if (!ini_key_exists("player", "music_on"))
+        ini_write_real("player", "music_on", 0);
+        
+     if (!ini_key_exists("player", "current_level_4"))
+        ini_write_real("player", "current_level_4", 1);
+    
+    
+
 }
 
+// Active ou non la musique
 music_on = ini_read_real("player", "music_on", 1);
 
 // Initialise les IAP
