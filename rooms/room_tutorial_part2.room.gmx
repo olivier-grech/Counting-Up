@@ -8,7 +8,7 @@
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>16777215</colour>
+  <colour>2103057</colour>
   <showcolour>-1</showcolour>
   <code>room_height = display_get_height();
 room_width = display_get_width();
