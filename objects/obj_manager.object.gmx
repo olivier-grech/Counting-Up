@@ -118,8 +118,8 @@ large_button_height = sprite_get_height(spr_button_play);
 small_button_width = sprite_get_width(spr_button_home);
 small_button_height = sprite_get_height(spr_button_home);
 
-large_button_stretch = (display_get_width()*0.6666)/large_button_width;
-small_button_stretch = (display_get_width()*0.0833)/small_button_width;
+large_button_stretch = (room_width*0.6666)/large_button_width;
+small_button_stretch = (room_height*0.0833)/small_button_width;
 </string>
           </argument>
         </arguments>
@@ -140,15 +140,17 @@ small_button_stretch = (display_get_width()*0.0833)/small_button_width;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_height = display_get_height();
-room_width = display_get_width();
+            <string>/// Test pour générer les boutons
 
-var gap = large_button_height*large_button_stretch;
+//room_height = display_get_height();
+//room_width = display_get_width();
 
-buttons[0] = instance_create(room_width/2, (room_height/2)-(3*gap), obj_button_play);
-buttons[1] = instance_create(room_width/2, (room_height/2)-(1*gap), obj_button_settings);
-buttons[2] = instance_create(room_width/2, (room_height/2)+(1*gap), obj_button_about);
-buttons[3] = instance_create(room_width/2, (room_height/2)+(3*gap), obj_button_quit);
+var gap = large_button_height*large_button_stretch*0.75;
+
+buttons[0] = instance_create(room_width /2, (room_height/2)-(3*gap), obj_button_play);
+buttons[1] = instance_create(room_width /2, (room_height/2)-(1*gap), obj_button_settings);
+buttons[2] = instance_create(room_width /2, (room_height/2)+(1*gap), obj_button_about);
+buttons[3] = instance_create(room_width /2, (room_height/2)+(3*gap), obj_button_quit);
 
 for (var i = 0; i &lt; 4; i++)
 {
