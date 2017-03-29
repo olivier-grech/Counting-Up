@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialise les sauvegardes et les paramètres de draw
+var col = make_color_rgb(247, 234, 244);
+draw_set_color(col);
 draw_set_font(fon_baloo_bhaina);
 ini_open("savedata.ini");
 
