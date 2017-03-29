@@ -1,4 +1,4 @@
-///Shuffling array function
+/// Mélange un tableau
 
 //argument0: the array to shuffle
 //argument1: the size of the array

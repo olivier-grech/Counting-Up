@@ -49,6 +49,7 @@
   <scripts name="scripts">
     <script>scripts\scr_shuffle_array.gml</script>
     <script>scripts\scr_check_uniqueness_array.gml</script>
+    <script>scripts\scr_display_text.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fon_baloo_bhaina</font>
