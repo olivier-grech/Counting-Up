@@ -51,8 +51,6 @@
     <script>scripts\scr_check_uniqueness_array.gml</script>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\fon_kenvector_future</font>
-    <font>fonts\fon_roboto</font>
     <font>fonts\fon_baloo_bhaina</font>
   </fonts>
   <objects name="objects">
