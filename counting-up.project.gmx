@@ -50,6 +50,10 @@
     <script>scripts\scr_shuffle_array.gml</script>
     <script>scripts\scr_check_uniqueness_array.gml</script>
     <script>scripts\scr_display_text.gml</script>
+    <scripts name="Generate rooms">
+      <script>scripts\scr_generate_menu_main.gml</script>
+      <script>scripts\scr_generate_menu_about.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fon_baloo_bhaina</font>
@@ -79,7 +83,6 @@
       <object>objects\obj_create_tutorial_part4</object>
       <object>objects\obj_create_tutorial_part5</object>
       <object>objects\obj_manager</object>
-      <object>objects\obj_display_credits</object>
       <object>objects\obj_display_difficulty_choice</object>
       <object>objects\obj_display_transition</object>
     </objects>

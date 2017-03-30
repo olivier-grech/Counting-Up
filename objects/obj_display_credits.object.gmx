@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_display_text("Made by#Olivier Grech##With music from#StumpyStrust");
+            <string>//scr_display_text("Made by#Olivier Grech##With music from#StumpyStrust");
+scr_display_text("Made by");
 </string>
           </argument>
         </arguments>

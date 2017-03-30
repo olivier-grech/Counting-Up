@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -88,6 +88,8 @@ if (!audio_is_playing(sou_doodle) &amp;&amp; music_on == 1)
           <argument>
             <kind>1</kind>
             <string>/// Initialise les paramètres de draw
+
+display_reset(8, true);
 var col = make_color_rgb(247, 234, 244);
 draw_set_color(col);
 draw_set_font(fon_baloo_bhaina);
@@ -121,43 +123,8 @@ small_button_height = sprite_get_height(spr_button_home);
 large_button_stretch = (room_width*0.6666)/large_button_width;
 small_button_stretch = (room_height*0.0833)/small_button_width;
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Test pour générer les boutons
+gap_button = large_button_height*large_button_stretch*0.75;
 
-//room_height = display_get_height();
-//room_width = display_get_width();
-
-var gap = large_button_height*large_button_stretch*0.75;
-
-buttons[0] = instance_create(room_width /2, (room_height/2)-(3*gap), obj_button_play);
-buttons[1] = instance_create(room_width /2, (room_height/2)-(1*gap), obj_button_settings);
-buttons[2] = instance_create(room_width /2, (room_height/2)+(1*gap), obj_button_about);
-buttons[3] = instance_create(room_width /2, (room_height/2)+(3*gap), obj_button_quit);
-
-for (var i = 0; i &lt; 4; i++)
-{
-   buttons[i].image_xscale *= large_button_stretch;
-   buttons[i].image_yscale *= large_button_stretch;
-}
 </string>
           </argument>
         </arguments>
