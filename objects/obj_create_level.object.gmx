@@ -216,12 +216,24 @@ for (var j = 0; j &lt; grid_size; j++) {
 var manager = instance_find(obj_manager, 0);
 
 var cell_size = manager.small_button_width;
-var hor_offset = room_width/2-(2*manager.small_button_gap);
-var ver_offset = room_height/2-(2*manager.small_button_gap);
-var indicator_up_y = room_height/2-(3.5*manager.small_button_gap);
-var indicator_down_y = room_height/2+(3.5*manager.small_button_gap);
-var indicator_left_x =  room_width/2-(3.5*manager.small_button_gap);
-var indicator_right_x = room_width/2+(3.5*manager.small_button_gap);
+if (grid_size == 5)
+{
+    var hor_offset = room_width/2-(2*manager.small_button_gap);
+    var ver_offset = room_height/2-(2*manager.small_button_gap);
+    var indicator_up_y = room_height/2-(3.5*manager.small_button_gap);
+    var indicator_down_y = room_height/2+(3.5*manager.small_button_gap);
+    var indicator_left_x =  room_width/2-(3.5*manager.small_button_gap);
+    var indicator_right_x = room_width/2+(3.5*manager.small_button_gap);
+}
+else if (grid_size == 4)
+{
+    var hor_offset = room_width/2-(1.5*manager.small_button_gap);
+    var ver_offset = room_height/2-(1.5*manager.small_button_gap);
+    var indicator_up_y = room_height/2-(3*manager.small_button_gap);
+    var indicator_down_y = room_height/2+(3*manager.small_button_gap);
+    var indicator_left_x =  room_width/2-(3*manager.small_button_gap);
+    var indicator_right_x = room_width/2+(3*manager.small_button_gap);
+}
 
 
 //Instantie les batiments
