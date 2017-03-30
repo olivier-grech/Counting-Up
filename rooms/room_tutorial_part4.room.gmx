@@ -70,7 +70,6 @@ instance_create(room_width/2, room_height-(2*button_height), obj_button_home);</
     <instance objName="obj_indicator2_tutorial" x="80" y="176" name="inst_29CA1A8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_indicator3_tutorial" x="80" y="272" name="inst_F3F7DC7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arrow" x="112" y="176" name="inst_EEFB5BFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_create_tutorial_part4" x="0" y="0" name="inst_9A4F7D56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
