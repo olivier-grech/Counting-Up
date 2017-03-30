@@ -86,7 +86,6 @@
       <object>objects\obj_create_tutorial_part4</object>
       <object>objects\obj_create_tutorial_part5</object>
       <object>objects\obj_manager</object>
-      <object>objects\obj_display_difficulty_choice</object>
       <object>objects\obj_display_transition</object>
     </objects>
     <objects name="Tutorial">
