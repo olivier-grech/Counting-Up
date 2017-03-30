@@ -5,7 +5,7 @@ buttons[1] = instance_create(room_width /2, (room_height/2)-(1*manager.gap_butto
 buttons[2] = instance_create(room_width /2, (room_height/2)+(1*manager.gap_button), obj_button_about);
 buttons[3] = instance_create(room_width /2, (room_height/2)+(3*manager.gap_button), obj_button_quit);
 
-for (var i = 0; i < 4; i++)
+for (var i = 0; i < array_length_1d(buttons); i++)
 {
    buttons[i].image_xscale *= manager.large_button_stretch;
    buttons[i].image_yscale *= manager.large_button_stretch;

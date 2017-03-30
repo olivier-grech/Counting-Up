@@ -89,7 +89,6 @@ if (!audio_is_playing(sou_doodle) &amp;&amp; music_on == 1)
             <kind>1</kind>
             <string>/// Initialise les paramètres de draw
 
-display_reset(8, true);
 var col = make_color_rgb(247, 234, 244);
 draw_set_color(col);
 draw_set_font(fon_baloo_bhaina);
