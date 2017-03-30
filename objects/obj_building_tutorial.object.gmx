@@ -184,6 +184,7 @@ with (inst)
         {
             
             ini_write_real("player", "played_tutorial", 1);
+            show_debug_message(string(ini_read_real("player", "played_tutorial", 0)))
             
             room_goto(room_transition);
         }

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (ini_read_real("player", "played_tutorial", 0) == 0)
+            <string>show_debug_message(string(ini_read_real("player", "played_tutorial", 0)))
+
+if (ini_read_real("player", "played_tutorial", 0) == 0)
 {
     room_goto(room_tutorial_part1);
 }

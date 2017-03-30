@@ -34,6 +34,7 @@ current_difficulty = 0; // 0 = tutorial, 4 = 4*4, 5 = 5*5
 ini_open("savedata.ini");
 if (!ini_section_exists("player"))
 {
+    show_debug_message("Player section not found. Creating it...");
     ini_write_real("player", "played_tutorial", 0); // Indique si le tutorial a été joué ou non
     ini_write_real("player", "music_on", 0); // Indique si la musique est active ou non
     ini_write_real("player", "current_level_4", 1); // Indique le niveau actuel en difficulté 4
@@ -43,8 +44,12 @@ if (!ini_section_exists("player"))
 }
 else 
 {
+    show_debug_message("Player section found!");
     if (!ini_key_exists("player", "played_tutorial"))
+    {
+        show_debug_message("/!\ Init played_tutorial");
         ini_write_real("player", "played_tutorial", 0);
+    }
     if (!ini_key_exists("player", "music_on"))
         ini_write_real("player", "music_on", 0);
     if (!ini_key_exists("player", "current_level_4"))

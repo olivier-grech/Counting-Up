@@ -227,7 +227,7 @@ var indicator_right_x = room_width/2+(3.5*manager.small_button_gap);
 //Instantie les batiments
 for (var i = 0; i &lt; grid_size; i++) {
     for (var j = 0; j &lt; grid_size; j++) {
-        var inst = instance_create(hor_offset+(i*manager.small_button_gap), ver_offset+(j*manager.small_button_gap), obj_building_tutorial);
+        var inst = instance_create(hor_offset+(i*manager.small_button_gap), ver_offset+(j*manager.small_button_gap), obj_building);
         inst.i = i;
         inst.j = j;
         inst.image_xscale *= manager.small_button_stretch;
@@ -355,7 +355,7 @@ else if (grid_size==5)
     level += " - Hard"
 }
 
-draw_text(208, 16, "Level "+level);
+scr_display_text("Level "+level);
 </string>
           </argument>
         </arguments>

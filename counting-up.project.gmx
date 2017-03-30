@@ -59,6 +59,7 @@
       <script>scripts\scr_generate_tutorial3.gml</script>
       <script>scripts\scr_generate_tutorial4.gml</script>
       <script>scripts\scr_generate_tutorial5.gml</script>
+      <script>scripts\scr_generate_level.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
