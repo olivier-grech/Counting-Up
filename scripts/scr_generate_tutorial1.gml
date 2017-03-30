@@ -16,7 +16,7 @@ for (var i = 0; i < array_length_1d(buttons); i++)
    buttons[i].image_yscale *= manager.small_button_stretch;
 }
 
-button_home = instance_create(room_width /2, room_height - manager.small_button_gap - manager.small_button_width*manager.small_button_stretch*0.3, obj_button_home);
+button_home = instance_create(room_width /2, room_height - manager.home_button_gap, obj_button_home);
 
 button_home.image_xscale *= manager.small_button_stretch;
 button_home.image_yscale *= manager.small_button_stretch;
