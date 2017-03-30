@@ -56,6 +56,8 @@
       <script>scripts\scr_generate_menu_about.gml</script>
       <script>scripts\scr_generate_menu_difficulty.gml</script>
       <script>scripts\scr_generate_tutorial1.gml</script>
+      <script>scripts\scr_generate_tutorial3.gml</script>
+      <script>scripts\scr_generate_tutorial4.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

@@ -10,13 +10,7 @@
   <persistent>0</persistent>
   <colour>2103057</colour>
   <showcolour>-1</showcolour>
-  <code>room_height = display_get_height();
-room_width = display_get_width();
-var button_height = sprite_get_height(spr_button_play)
-var button_width = sprite_get_width(spr_button_play)
-
-instance_create(room_width/2, (room_height/2)+(3*button_height), obj_button_next);
-instance_create(room_width/2, room_height-(2*button_height), obj_button_home);</code>
+  <code>scr_generate_tutorial4();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -56,7 +50,9 @@ instance_create(room_width/2, room_height-(2*button_height), obj_button_home);</
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances/>
+  <instances>
+    <instance objName="obj_draw_tutorial4" x="0" y="0" name="inst_AF6F6C54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+  </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
