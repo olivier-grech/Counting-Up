@@ -96,6 +96,9 @@
       <object>objects\obj_indicator3_tutorial</object>
       <object>objects\obj_arrow</object>
     </objects>
+    <objects name="Text">
+      <object>objects\obj_draw_credits</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu_main</room>

@@ -4,5 +4,3 @@ button_home = instance_create(room_width /2, room_height-manager.gap_button, obj
 
 button_home.image_xscale *= manager.small_button_stretch;
 button_home.image_yscale *= manager.small_button_stretch;
-
-scr_display_text("Made by#Olivier Grech##With music from#StumpyStrust");
