@@ -123,6 +123,7 @@ large_button_stretch = (room_width*0.6666)/large_button_width;
 small_button_stretch = (room_height*0.0833)/small_button_width;
 
 gap_button = large_button_height*large_button_stretch*0.75;
+gam_small_button = small_button_height*small_button_stretch*0.75;
 
 </string>
           </argument>

@@ -10,13 +10,7 @@
   <persistent>0</persistent>
   <colour>2103057</colour>
   <showcolour>-1</showcolour>
-  <code>room_height = display_get_height();
-room_width = display_get_width();
-var button_height = sprite_get_height(spr_button_play)
-var button_width = sprite_get_width(spr_button_play)
-
-instance_create(room_width/2, (room_height/2)+(3*button_height), obj_button_next);
-instance_create(room_width/2, room_height-(2*button_height), obj_button_home);</code>
+  <code>scr_generate_tutorial1();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
