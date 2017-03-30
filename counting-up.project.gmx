@@ -80,7 +80,6 @@
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
-      <object>objects\obj_create_tutorial_part1</object>
       <object>objects\obj_create_tutorial_part2</object>
       <object>objects\obj_create_tutorial_part3</object>
       <object>objects\obj_create_tutorial_part4</object>
@@ -99,6 +98,7 @@
     </objects>
     <objects name="Text">
       <object>objects\obj_draw_credits</object>
+      <object>objects\obj_draw_tutorial1</object>
     </objects>
   </objects>
   <rooms name="rooms">

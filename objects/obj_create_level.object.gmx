@@ -40,9 +40,6 @@ var first_column;
 var available_numbers_list = ds_list_create();
 
 // UI 
-var cell_size = sprite_get_height(spr_building_1);
-var gap = cell_size/2;
-
 var hor_offset = (room_width/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
 var ver_offset = (room_height/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
 var indicator_up_y = ver_offset - (2*cell_size);
@@ -189,16 +186,6 @@ for (var j = 0; j &lt; grid_size; j++) {
     }
     indicator_right[j] = temp;
 }
-
-show_debug_message(buildings);
-show_debug_message("Left indicator (from up to down):");
-show_debug_message(indicator_left);
-show_debug_message("Right indicator (from up to down):");
-show_debug_message(indicator_right);
-show_debug_message("Up indicator (from left to right):");
-show_debug_message(indicator_up);
-show_debug_message("Down indicator (from left to right):");
-show_debug_message(indicator_down);
 
 //Instanciate the buildings
 for (var i = 0; i &lt; grid_size; i++) {
