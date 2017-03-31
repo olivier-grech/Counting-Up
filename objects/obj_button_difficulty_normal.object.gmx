@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Set context to 4
 
-inst = instance_find(obj_context, 1);
+inst = instance_find(obj_manager, 0);
 inst.current_difficulty = 4;
 </string>
           </argument>

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Create level
+            <string>/// Génère les tableaux
 
 grid_size = 3;
 buildings[0, 0] = 0;
@@ -39,16 +39,6 @@ var temp;
 var temp_max;
 var first_column;
 var available_numbers_list = ds_list_create();
-
-// UI 
-var gap = 16;
-var cell_size = 32
-var hor_offset = (room_width/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
-var ver_offset = (room_height/2)-((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2)));
-var indicator_up_y = ver_offset - (2*cell_size);
-var indicator_down_y = (room_height/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2))) + cell_size;
-var indicator_left_x =  hor_offset - (2*cell_size);
-var indicator_right_x = (room_width/2) + ((gap*((grid_size/2)-0.5))+(cell_size*(grid_size/2))) + cell_size;
 
 // Initialize the buildings array
 
@@ -117,19 +107,54 @@ for (var j = 0; j &lt; grid_size; j++) {
     }
     indicator_right[j] = temp;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Instantie les tableaux
+var manager = instance_find(obj_manager, 0);
 
-//Instanciate the buildings
+
+
+var cell_size = manager.small_button_width;
+var hor_offset = room_width/2-(1*manager.small_button_gap);
+var ver_offset = room_height/2-(1*manager.small_button_gap);
+var indicator_up_y = room_height/2-(2.5*manager.small_button_gap);
+var indicator_down_y = room_height/2+(2.5*manager.small_button_gap);
+var indicator_left_x =  room_width/2-(2.5*manager.small_button_gap);
+var indicator_right_x = room_width/2+(2.5*manager.small_button_gap);
+
+//Instantie les batiments
 for (var i = 0; i &lt; grid_size; i++) {
     for (var j = 0; j &lt; grid_size; j++) {
-        var inst = instance_create(hor_offset+(i*(gap+cell_size)), ver_offset+(j*(gap+cell_size)), obj_building_tutorial);
+        var inst = instance_create(hor_offset+(i*manager.small_button_gap), ver_offset+(j*manager.small_button_gap), obj_building_tutorial);
         inst.i = i;
         inst.j = j;
+        inst.image_xscale *= manager.small_button_stretch;
+        inst.image_yscale *= manager.small_button_stretch;
     }
 }
 
+
 //Instanciate the up indicators
 for (var i = 0; i &lt; grid_size; i++) {
-    inst = instance_create(hor_offset+(i*(gap+cell_size)), indicator_up_y, obj_indicator);
+    inst = instance_create(hor_offset+(i*manager.small_button_gap), indicator_up_y, obj_indicator);
     with (inst) {
         height = other.indicator_up[i];
     }
@@ -137,7 +162,7 @@ for (var i = 0; i &lt; grid_size; i++) {
 
 //Instanciate the down indicators
 for (var i = 0; i &lt; grid_size; i++) {
-    inst = instance_create(hor_offset+(i*(gap+cell_size)), indicator_down_y, obj_indicator);
+    inst = instance_create(hor_offset+(i*manager.small_button_gap), indicator_down_y, obj_indicator);
     with (inst) {
         height = other.indicator_down[i];
     }
@@ -145,7 +170,7 @@ for (var i = 0; i &lt; grid_size; i++) {
 
 //Instanciate the left indicators
 for (var j = 0; j &lt; grid_size; j++) {
-    inst = instance_create(indicator_left_x, ver_offset+(j*(gap+cell_size)), obj_indicator);
+    inst = instance_create(indicator_left_x, ver_offset+(j*manager.small_button_gap), obj_indicator);
     with (inst) {
         height = other.indicator_left[j];
     }
@@ -153,15 +178,18 @@ for (var j = 0; j &lt; grid_size; j++) {
 
 //Instanciate the right indicators
 for (var j = 0; j &lt; grid_size; j++) {
-    inst = instance_create(indicator_right_x, ver_offset+(j*(gap+cell_size)), obj_indicator);
+    inst = instance_create(indicator_right_x, ver_offset+(j*manager.small_button_gap), obj_indicator);
     with (inst) {
         height = other.indicator_right[j];
     }
 }
 
+
 for (var i = 0; i &lt; instance_number(obj_indicator); i += 1)
 {
    current_indicator = instance_find(obj_indicator, i);
+   current_indicator.image_xscale *= manager.small_button_stretch;
+   current_indicator.image_yscale *= manager.small_button_stretch;
    
    switch (current_indicator.height) {
  
@@ -182,40 +210,6 @@ for (var i = 0; i &lt; instance_number(obj_indicator); i += 1)
           break;
     }
 }
-
-show_debug_message(string(buildings));
-show_debug_message(string(buildings_guessed));
-
-
-
-
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_halign(fa_center);
-draw_text(208, 64, "Can  you  complete  this  grid?");
 </string>
           </argument>
         </arguments>

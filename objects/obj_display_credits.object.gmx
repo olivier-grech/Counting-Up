@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_set_halign(fa_center);
-draw_text(208, 64, "Made  by##Olivier  Grech###With  music  from##StumpyStrust");
+            <string>//scr_display_text("Made by#Olivier Grech##With music from#StumpyStrust");
+scr_display_text("Made by");
 </string>
           </argument>
         </arguments>

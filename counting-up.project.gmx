@@ -3,8 +3,29 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles">
+    <datafile>
+      <name>savedata.ini</name>
+      <exists>-1</exists>
+      <size>0</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>savedata.ini</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions>
     <extension index="0">extensions\GooglePlayServicesExtension</extension>
+    <extension index="1">extensions\GooglePlayLicensingAsExt</extension>
+    <extension index="2">extensions\GooglePlayServicesIAPExtension</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sou_doodle</sound>
@@ -12,9 +33,9 @@
   <sprites name="sprites">
     <sprites name="UI">
       <sprite>sprites\spr_button_play</sprite>
-      <sprite>sprites\spr_button_quit</sprite>
       <sprite>sprites\spr_button_settings</sprite>
       <sprite>sprites\spr_button_about</sprite>
+      <sprite>sprites\spr_button_quit</sprite>
       <sprite>sprites\spr_button_home</sprite>
       <sprite>sprites\spr_button_donate</sprite>
       <sprite>sprites\spr_button_musicoff</sprite>
@@ -47,9 +68,21 @@
   <scripts name="scripts">
     <script>scripts\scr_shuffle_array.gml</script>
     <script>scripts\scr_check_uniqueness_array.gml</script>
+    <script>scripts\scr_display_text.gml</script>
+    <scripts name="Generate rooms">
+      <script>scripts\scr_generate_menu_main.gml</script>
+      <script>scripts\scr_generate_menu_settings.gml</script>
+      <script>scripts\scr_generate_menu_about.gml</script>
+      <script>scripts\scr_generate_menu_difficulty.gml</script>
+      <script>scripts\scr_generate_tutorial1.gml</script>
+      <script>scripts\scr_generate_tutorial3.gml</script>
+      <script>scripts\scr_generate_tutorial4.gml</script>
+      <script>scripts\scr_generate_tutorial5.gml</script>
+      <script>scripts\scr_generate_level.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\fon_kenvector_future</font>
+    <font>fonts\fon_baloo_bhaina</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_building</object>
@@ -61,25 +94,18 @@
       <object>objects\obj_button_quit</object>
       <object>objects\obj_button_settings</object>
       <object>objects\obj_button_about</object>
-      <object>objects\obj_button_donate</object>
       <object>objects\obj_button_music</object>
       <object>objects\obj_button_next</object>
       <object>objects\obj_button_difficulty_normal</object>
       <object>objects\obj_button_difficulty_hard</object>
       <object>objects\obj_button_tutorial</object>
+      <object>objects\obj_button_donate</object>
     </objects>
     <objects name="General">
       <object>objects\obj_create_level</object>
-      <object>objects\obj_create_tutorial_part1</object>
-      <object>objects\obj_create_tutorial_part2</object>
-      <object>objects\obj_create_tutorial_part3</object>
-      <object>objects\obj_create_tutorial_part4</object>
-      <object>objects\obj_create_tutorial_part5</object>
-      <object>objects\obj_setup_game</object>
-      <object>objects\obj_display_credits</object>
-      <object>objects\obj_display_difficulty_choice</object>
+      <object>objects\obj_create_tutorial_level</object>
+      <object>objects\obj_manager</object>
       <object>objects\obj_display_transition</object>
-      <object>objects\obj_context</object>
     </objects>
     <objects name="Tutorial">
       <object>objects\obj_building1_tutorial</object>
@@ -89,6 +115,14 @@
       <object>objects\obj_indicator2_tutorial</object>
       <object>objects\obj_indicator3_tutorial</object>
       <object>objects\obj_arrow</object>
+    </objects>
+    <objects name="Text">
+      <object>objects\obj_draw_credits</object>
+      <object>objects\obj_draw_tutorial1</object>
+      <object>objects\obj_draw_tutorial2</object>
+      <object>objects\obj_draw_tutorial3</object>
+      <object>objects\obj_draw_tutorial4</object>
+      <object>objects\obj_draw_tutorial5</object>
     </objects>
   </objects>
   <rooms name="rooms">
