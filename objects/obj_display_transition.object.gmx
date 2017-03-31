@@ -52,7 +52,7 @@
             <kind>1</kind>
             <string>/// Switch room according to current context
 
-inst = instance_find(obj_context, 1);
+inst = instance_find(obj_manager, 1);
 if (inst.current_difficulty == 0)
 {
     room_goto(room_menu_difficulty);
@@ -87,9 +87,12 @@ else if (inst.current_difficulty == 5)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>var horizontal_offset = surface_get_width(application_surface)*0.5;
+var vertical_offset = surface_get_height(application_surface)*0.5;
 draw_set_halign(fa_center);
-draw_text(room_width/2, room_height/2, "Well done!");
+
+
+draw_text_ext_transformed(horizontal_offset, vertical_offset, "Well done!", 30, surface_get_width(application_surface), 1, 1, 0);
 </string>
           </argument>
         </arguments>

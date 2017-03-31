@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (ini_read_real("player", "played_tutorial", 0) == 0)
+            <string>ini_open("savedata.ini");
+
+show_debug_message(string(ini_read_real("player", "played_tutorial", 0)))
+
+if (ini_read_real("player", "played_tutorial", 0) == 0)
 {
     room_goto(room_tutorial_part1);
 }
@@ -33,6 +37,8 @@ else
 {
     room_goto(room_menu_difficulty);
 }
+
+ini_close();
 </string>
           </argument>
         </arguments>

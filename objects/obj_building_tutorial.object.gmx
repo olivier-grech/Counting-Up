@@ -49,13 +49,14 @@ height = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Increase height and then check level completion
+            <string>ini_open("savedata.ini");
+/// Increase height and then check level completion
 
 // Increase height
 
 
 // Check level completion
-inst = instance_find(obj_create_tutorial_part5, 0);
+inst = instance_find(obj_create_tutorial_level, 0);
 with (inst) 
 {
 
@@ -184,7 +185,8 @@ with (inst)
         {
             
             ini_write_real("player", "played_tutorial", 1);
-            
+            show_debug_message(string(ini_read_real("player", "played_tutorial", 0)))
+            ini_close();
             room_goto(room_transition);
         }
     }
@@ -195,6 +197,7 @@ with (inst)
     }
     
 }
+ini_close();
 
 
 
