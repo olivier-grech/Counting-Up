@@ -68,6 +68,7 @@ music_on = ini_read_real("player", "music_on", 1);
 if (!audio_is_playing(sou_doodle) &amp;&amp; music_on == 1)
     audio_play_sound(sou_doodle, 10, true);
 
+ini_close();
 
 
 

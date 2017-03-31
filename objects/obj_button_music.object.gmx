@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>music_on = ini_read_real("player", "music_on", 1);
+            <string>ini_open("savedata.ini");
+
+music_on = ini_read_real("player", "music_on", 1);
 if (music_on == 1)
 {
     sprite_index = spr_button_musicon;
@@ -34,6 +36,8 @@ else
 {
     sprite_index = spr_button_musicoff;
 }
+
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -56,7 +60,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>music_on = ini_read_real("player", "music_on", 1);
+            <string>ini_open("savedata.ini");
+
+music_on = ini_read_real("player", "music_on", 1);
 
 if (music_on == 1)
 {
@@ -70,6 +76,8 @@ else
     audio_play_sound(sou_doodle, 1, true);
     sprite_index = spr_button_musicon;
 }
+
+ini_close();
 </string>
           </argument>
         </arguments>
