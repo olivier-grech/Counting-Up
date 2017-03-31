@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Génère les tableaux
+            <string>ini_open("savedata.ini");
+/// Génère les tableaux
 
 buildings[0, 0] = 0;
 buildings_guessed[0, 0] = 0;
@@ -180,6 +181,8 @@ for (var j = 0; j &lt; grid_size; j++) {
     }
     indicator_right[j] = temp;
 }
+
+ini_close();
 
 
 
@@ -353,6 +356,7 @@ event_perform(ev_alarm, 0);
           <argument>
             <kind>1</kind>
             <string>///Display level number
+ini_open("savedata.ini");
 
 level = ini_read_real("player", "current_level_"+string(grid_size), 0);
 level = string(level);
@@ -368,6 +372,8 @@ else if (grid_size==5)
 }
 
 scr_display_text("Level "+level);
+
+ini_close();
 </string>
           </argument>
         </arguments>

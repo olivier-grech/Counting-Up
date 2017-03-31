@@ -49,7 +49,8 @@ height = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Increase height and then check level completion
+            <string>ini_open("savedata.ini");
+/// Increase height and then check level completion
 
 // Increase height
 
@@ -185,6 +186,7 @@ with (inst)
             var current_level = ini_read_real("player", "current_level_"+string(grid_size), 0);
             ini_write_real("player", "current_level_"+string(grid_size), current_level+1);
             ini_write_string("player", "save_grid_"+string(grid_size), "");
+            ini_close();
             room_goto(room_transition);
         }
     }
@@ -195,6 +197,7 @@ with (inst)
     }
     
 }
+ini_close();
 
 
 
